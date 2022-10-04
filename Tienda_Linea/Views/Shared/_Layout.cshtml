@@ -1,0 +1,635 @@
+﻿<!DOCTYPE html>
+<html dir="ltr" lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Bike Store</title>
+    <meta name="keywords" content="Latest Blog" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen" />
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700&display=swap" rel="stylesheet">
+    <link href="css/stylesheet.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,800&display=swap"
+          rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet" />
+    <link href="css/owl.carousel.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet" />
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen" />
+    <link href="css/swiper.min.css" type="text/css" rel="stylesheet" media="screen" />
+    <link href="css/opencart.css" type="text/css" rel="stylesheet" media="screen" />
+    <link href="css/magnific-popup.css" type="text/css" rel="stylesheet" media="screen" />
+
+</head>
+
+<body>
+    <!-- loader -->
+    <div class="loader" id="window">
+        <img src="image/preloader.gif" id="hourglass2" alt="hourglass" title="hourglass">
+    </div>
+    <!-- loader end -->
+    <!-- top section -->
+    <nav id="top">
+        <div class="container-fluid">
+            <div class="row">
+                <a href="" class="phone_contact">Bienvenido(a) a nuestra tienda en línea</a>
+                <div id="top-links" class="nav pull-right">
+                    <ul class="list-inline">
+                        <li>
+                            <div class="pull-left">
+                                <form action="#" method="post" enctype="multipart/form-data" id="form-language">
+                                    <div class="btn-group">
+                                        <button class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+                                            <img src="image/en-gb.png" alt="English" title="English">
+                                            <span class="hidden-xs hidden-sm hidden-md">Español</span>&nbsp;<i class="fa fa-angle-down"></i>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <button class="btn btn-link btn-block language-select" type="button"
+                                                        name="en-gb">
+                                                    <img src="image/en-gb.png" alt="English"
+                                                         title="English" /> English
+                                                </button>
+                                            </li>
+                                            <li>
+                                                <button class="btn btn-link btn-block language-select" type="button"
+                                                        name="ar">
+                                                    <img src="image/ar.png" alt="Arabic" title="Arabic" />
+                                                    Español
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <input type="hidden" name="code" value="" />
+                                    <input type="hidden" name="redirect" value="image" />
+                                </form>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- end -->
+    <!-- header section -->
+    <header class="main-menu">
+        <div class="header_wrapper_home">
+            <div class="container-fluid">
+                <!-- destop vergian -->
+                <div class="row header_sec destop_header">
+                    <div class="col-sm-4 rtl_logo">
+                        <div id="logo">
+                            <a href="#">
+                                <img src="image/logo1.png" title="Your Store" alt="Your Store"
+                                     class="img-responsive" />
+                            </a>
+                        </div>
+                    </div>
+                    <!-- my account -->
+                    <div class="col-sm-8">
+                        <div class="text_account_wrapper pull-right">
+                            <div class="header_transaction header_account">
+                                <a href="#" title="My Account" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-user-o faicons"></i> <span class="hidden-xs hidden-sm hidden-md">
+                                        Mi
+                                        cuenta
+                                    </span> <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-right megamenu">
+                                    <li>
+                                        <a href="register.html">Registrarse</a>
+                                    </li>
+                                    <li>
+                                        <a href="login.html">Iniciar sesión</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- wishlist -->
+                            <div class="header_transaction header_wishlist">
+                                <a href="wish-list.html" id="wishlist-total" title="Wish List (0)">
+                                    <i class="fa fa-heart-o faicons"></i> <span class="hidden-xs hidden-sm hidden-md">Deseos</span>
+                                </a>
+                            </div>
+                            <!-- cart -->
+                            <div class="header_transaction heder_cart">
+                                <div id="cart" class="btn-group btn-block">
+                                    <button type="button" data-toggle="dropdown" data-loading-text="Loading..."
+                                            class="btn btn-inverse btn-block btn-lg dropdown-toggle">
+                                        <p class="cart_data_p">
+                                            <i class="fa fa-shopping-cart faicons"></i> Carrito <span class="cart_qut">0</span>
+                                        </p>
+                                    </button>
+                                    <ul class="dropdown-menu pull-right cheekout_weap">
+                                        <li>
+                                            <p class="text-center">Your shopping cart is empty!</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- search -->
+                            <div class=" search_and_cart_wrapper_header">
+                                <div class="text-right cart-menu">
+                                    <div class="search_wrapper">
+                                        <a class="ebsearch"><i class="fa fa-search"></i></a>
+                                    </div>
+                                </div>
+                                <div id="search" class="input-group">
+                                    <span class="close">x</span>
+                                    <div class="bikes_search">
+                                        <p>Encuentra lo que buscas</p>
+                                    </div>
+                                    <input value="" class="esearch" name="search" type="search"
+                                           placeholder="Search here">
+                                    <span class="input-group-btn searchicon">
+                                        <button type="button" class="btn btn-default btn-lg">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header section end-->
+    <!--menu-->
+    <div class="header_menu">
+        <div class="container-fluid">
+            <div class="row">
+                <nav id="menu" class="navbar">
+                    <div class="navbar-header">
+                        <span id="category" class="visible-xs"> Categorias </span>
+                        <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse"
+                                data-target=".navbar-ex1-collapse">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse navbar-ex1-collapse">
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a href="index.html">Inicio</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle"
+                                   data-toggle="dropdown">Bicicletas</a>
+                                <div class="dropdown-menu megamenu">
+                                    <div class="dropdown-inner">
+                                        <ul class="list-unstyled">
+                                            <li><a href="catagory.html">Triatlon</a></li>
+                                            <li><a href="catagory.html">Cross / Gravel</a></li>
+                                            <li><a href="catagory.html">Mountain</a></li>
+                                            <li><a href="catagory.html">Track</a></li>
+                                            <li><a href="catagory.html">Urban</a></li>
+                                        </ul>
+                                    </div>
+                                    <a href="catagory.html" class="see-all">Todas las categorias</a>
+                                </div>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle"
+                                   data-toggle="dropdown">Accesorios</a>
+                                <div class="dropdown-menu megamenu">
+                                    <div class="dropdown-inner">
+                                        <ul class="list-unstyled">
+                                            <li>
+                                                <a href="catagory.html">Cascos</a>
+                                            </li>
+                                            <li>
+                                                <a href="catagory.html">Partes</a>
+                                            </li>
+                                            <li>
+                                                <a href="catagory.html">Zapatos</a>
+                                            </li>
+                                            <li>
+                                                <a href="catagory.html">Guantes</a>
+                                            </li>
+                                            <li>
+                                                <a href="catagory.html">Reparación</a>
+                                            </li>
+                                            <li>
+                                                <a href="catagory.html">Botellas</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <a href="catagory.html" class="see-all">Mostrar todas las categorias</a>
+                                </div>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    Productos de
+                                    nutrición
+                                </a>
+                                <div class="dropdown-menu megamenu">
+                                    <div class="dropdown-inner">
+                                        <ul class="list-unstyled">
+                                            <li>
+                                                <a href="catagory.html">Hidratantes</a>
+                                            </li>
+                                            <li>
+                                                <a href="catagory.html">Energéticos</a>
+                                            </li>
+                                            <li>
+                                                <a href="catagory.html">Barras</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <a href="catagory.html" class="see-all">Mostrar todos los productos</a>
+                                </div>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Taller</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!--menu end-->
+    <!--
+        
+        Contenido
+        
+    -->
+
+    @RenderBody()
+
+    <footer id="footer">
+        <div class="container-fluid clear">
+            <div class=" row">
+                <div class=" footer_links">
+                    <!-- contact us -->
+                    <div class="col-sm-3 col_footer footer_padding">
+                        <div class="footer-inner-matter">
+                            <h3 class="wow fadeInUp">Contacto</h3>
+                            <ul>
+                                <li>
+                                    <img src="image/icon-phone.png">
+                                    <p>Atención al cliente</p><span>
+                                        <i class="fa fa-volume-control-phone"></i>(+800)
+                                        123456 789
+                                    </span>
+                                </li>
+                                <li><i class="fa fa-map-marker"></i> 622 Vernon Drive Flushing, NY 11354</li>
+                                <li class="email"><i class="fa fa-envelope"></i> company123@gmail.com</li>
+                            </ul>
+                            <div class="social_media_wrapper">
+                                <ul>
+                                    <li class="facebook"><a href=""><i class="fa fa-facebook-square"></i></a></li>
+                                    <li class="skype"><a href=""><i class="fa fa-skype"></i></a></li>
+                                    <li class="youtube"><a href=""><i class="fa fa-youtube-square"></i></a></li>
+                                    <li class="google"><a href=""><i class="fa fa-google-plus-square"></i></a></li>
+                                    <li class="linkedin"><a href=""><i class="fa fa-linkedin-square"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                    <!---------/ end cntact us--------->
+                    <!-- information -->
+                    <div class="col-sm-3 col_footer footer_padding">
+                        <div class="footer-inner-matter">
+                            <h3 class="wow fadeInUp">Información</h3>
+                            <ul class="list-unstyled">
+                                <li><a href="about.html" class="wow fadeInUp">Sobre nosotros</a></li>
+                                <li><a href="#" class="wow fadeInUp"> Información de envío</a></li>
+                                <li><a href="#" class="wow fadeInUp"> Políticas de privacidad</a></li>
+                                <li><a href="#" class="wow fadeInUp"> Terminos &amp; Condiciones</a></li>
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                    <!-- / information end-->
+                    <!-- extra -->
+                    <div class="col-sm-3 col_footer footer_padding">
+                        <div class="footer-inner-matter">
+                            <h3 class="wow fadeInUp">Extras</h3>
+                            <ul class="list-unstyled">
+                                <li><a href="contact.html" class="wow fadeInUp"> Contacto</a></li>
+                                <li><a href="sitemap.html" class="wow fadeInUp"> Mapa del sitio</a></li>
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+
+                    <div class="clear"> </div>
+                    <!--- copy-right-area -->
+                    <div class=" social_footer copy_right_wrapper">
+                        <div class="col-sm-6 rtl_text">
+                            <div class="copy-right">
+                                <p class="wow fadeInDown   animated"
+                                   style="visibility: visible; animation-name: fadeInDown;">
+                                    © Copyright 2020 by Bike
+                                    Store. All right Reserved - Design By <a href="https://www.templatebazaar.in/"
+                                                                             target="_blank">Template bazaar</a>
+                                </p>
+                            </div>
+                        </div>
+                        <!-------/ end copyright----------->
+                        <!--- payment_links -->
+                        <div class="col-sm-6 rtl_text">
+                            <div class="payment_method_footer">
+                                <div class="payment_option_methods">
+                                    <ul>
+                                        <li><a href=""><img src="image/payment-1.png"></a></li>
+                                        <li><a href=""><img src="image/payment-2.png"></a></li>
+                                        <li><a href=""><img src="image/payment-3.png"></a></li>
+                                        <li><a href=""><img src="image/payment-4.png"></a></li>
+                                        <li><a href=""><img src="image/payment-5.png"></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--------/ end payment link------------>
+    </footer>
+    <div class="container">
+        <div class="top_button">
+            <a class="back-to-top" style="cursor:pointer; margin-right: 15px;" id="top-scrolltop">
+                <i class="fa fa-angle-up"></i>
+            </a>
+        </div>
+    </div>
+
+    <script src="js/jquery-2.1.1.min.js" type="text/javascript"></script>
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="js/wow.min.js" type="text/javascript"></script>
+    <script src="js/swiper.jquery.js" type="text/javascript"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/common.js" type="text/javascript"></script>
+    <script src="js/jquery.zoom.js"></script>
+    <script src="js/thestore.js"></script>
+    <script src="js/loader.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/scrol.js"></script>
+    <script src="js/carousel.js"></script>
+    <script src="js/jquery.magnific-popup.min.js" type="text/javascript"></script>
+    <script>
+        new WOW().init();
+    </script>
+
+    <script>
+        $('#top-scrolltop').on('click', function () {
+            $('html, body').animate({ scrollTop: 0 }, 500);
+        });
+
+        $(function ($) {
+            "use strict";
+            /*Back to top */
+            $(".back-to-top").addClass("hidden-top");
+            $(window).scroll(function () {
+                if ($(this).scrollTop() === 0) {
+                    $(".back-to-top").addClass("hidden-top")
+                } else {
+                    $(".back-to-top").removeClass("hidden-top")
+                }
+            });
+
+            $('.back-to-top').click(function () {
+                $('body,html').animate({ scrollTop: 0 }, 1200);
+                return false;
+            });
+        });
+    </script>
+
+    <script>
+        $('.quickviewopen').magnificPopup({
+            disableOn: 700,
+            type: 'iframe',
+            mainClass: 'mfp-fade',
+            removalDelay: 160,
+            preloader: true,
+            fixedContentPos: true
+        });
+
+        $(document).ready(function () {
+            $('#featured_product_filter').owlCarousel({
+                items: 5,
+                itemsDesktop: [1199, 4],
+                itemsDesktopSmall: [992, 3],
+                itemsTablet: [768, 2],
+                itemsMobile: [450, 1],
+                autoPlay: 6000,
+                pagination: false,
+                navigation: true,
+                navigationText: ['<i class="fa fa-angle-left fa-5x"></i>', '<i class="fa fa-angle-right fa-5x"></i>']
+            });
+        });
+
+
+        $(document).ready(function () {
+            $('#latest_product_filter').owlCarousel({
+                items: 5,
+                itemsDesktop: [1199, 4],
+                itemsDesktopSmall: [992, 3],
+                itemsTablet: [768, 2],
+                itemsMobile: [450, 1],
+                autoPlay: 6000,
+                pagination: false,
+                navigation: true,
+                navigationText: ['<i class="fa fa-angle-left fa-5x"></i>', '<i class="fa fa-angle-right fa-5x"></i>']
+            });
+        });
+
+
+        $(document).ready(function () {
+            $('#bestseller_product_filter').owlCarousel({
+                items: 5,
+                itemsDesktop: [1199, 4],
+                itemsDesktopSmall: [992, 3],
+                itemsTablet: [768, 2],
+                itemsMobile: [450, 1],
+                autoPlay: 6000,
+                pagination: false,
+                navigation: true,
+                navigationText: ['<i class="fa fa-angle-left fa-5x"></i>', '<i class="fa fa-angle-right fa-5x"></i>']
+            });
+        });
+
+
+        $(document).ready(function () {
+            $('#special_product_filter').owlCarousel({
+                items: 5,
+                itemsDesktop: [1199, 4],
+                itemsDesktopSmall: [992, 3],
+                itemsTablet: [768, 2],
+                itemsMobile: [450, 1],
+                autoPlay: 6000,
+                pagination: false,
+                navigation: true,
+                navigationText: ['<i class="fa fa-angle-left fa-5x"></i>', '<i class="fa fa-angle-right fa-5x"></i>']
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $('#testimonial0').owlCarousel({
+                items: 3,
+                itemsDesktop: [1199, 2],
+                itemsDesktopSmall: [992, 2],
+                itemsTablet: [768, 2],
+                itemsMobile: [450, 1],
+                autoPlay: 6000,
+                pagination: true,
+                navigation: true,
+                navigationText: ['<i class="fa fa-angle-left fa-5x"></i>', '<i class="fa fa-angle-right fa-5x"></i>']
+            });
+        });
+
+    </script>
+    <script type="text/javascript">
+        $('#newsletterFooterModule0 #button-subsribe').on('click', function () {
+            //alert('ss');
+            $.ajax({
+                url: 'index.php?route=extension/module/awesomenewsletter/addsubscribe',
+                type: 'post',
+                data: $('#newsletterFooterModule0 #subsribe input[type=\'text\']'),
+                dataType: 'json',
+                beforeSend: function () {
+                    $('#newsletterFooterModule0 #button-subsribe').button('loading');
+                },
+                complete: function () {
+                    $('#newsletterFooterModule0 #button-subsribe').button('reset');
+                },
+                success: function (json) {
+                    $('.text-danger').parent().removeClass('has-error');
+                    $('.alert, .text-danger').remove();
+                    $('#newsletterFooterModule0 #successmsg').html('');
+
+                    if (json['error']) {
+                        if (json['error']['email']) {
+                            $('#newsletterFooterModule0 #input-newsletter-email').parent().after('<div class="col-sm-12 text-left text-danger">' + json['error']['email'] + '</div>');
+
+                            $('.text-danger').parent().addClass('has-error');
+                        }
+
+                        if (json['error']['name']) {
+                            $('#newsletterFooterModule0 #input-newsletter-name').parent().after('<div class="text-left text-danger">' + json['error']['name'] + '</div>');
+                            $('.text-danger').parent().addClass('has-error');
+                        }
+                    }
+
+                    if (json['success']) {
+                        $('#newsletterFooterModule0 #input-newsletter-email').parent().after('<div class="text-left text-success">' + json['success'] + '</div>');
+                        setTimeout(function () {
+                            $('.text-success').remove();
+                        }, 2000);
+
+                        $('#newsletterFooterModule0 #subsribe input[type=\'text\']').val('');
+                        $('#newsletterFooterModule0 #subsribe input[type=\'email\']').val('');
+                    }
+
+                    if (json['warring']) {
+                        $('#newsletterFooterModule0 #successmsg').html('<div class="alert alert-danger">' + json['warring'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+                    }
+
+                }
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $('#newsletterModal .button-subsribe').on('click', function () {
+            $.ajax({
+                url: 'index.php?route=extension/awesomenewsletter_popup/addsubscribe',
+                type: 'post',
+                data: $('#newsletterModal .subsribe input[type=\'text\']'),
+                dataType: 'json',
+                beforeSend: function () {
+                    $('#newsletterModal .button-subsribe').button('loading');
+                },
+                complete: function () {
+                    $('#newsletterModal .button-subsribe').button('reset');
+                },
+                success: function (json) {
+                    $('.alert, .text-danger').remove();
+                    $('.form-group').removeClass('has-error');
+                    $('#newsletterModal .successmsg').html('');
+
+                    if (json['error']) {
+                        for (i in json['error']) {
+                            var element = $('#newsletterModal #input-newsletter-' + i.replace('_', '-'));
+
+                            if ($(element).parent().hasClass('input-group')) {
+                                $(element).parent().after('<div class="text-danger">' + json['error'][i] + '</div>');
+                            } else {
+                                $(element).after('<div class="text-danger">' + json['error'][i] + '</div>');
+                            }
+                        }
+
+                        $('.text-danger').parent().addClass('has-error');
+                    }
+
+                    if (json['success']) {
+                        $('#newsletterModal .successmsg').html('<div class="alert alert-success">' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+
+                        $('#newsletterModal .subsribe input[type=\'text\']').val('');
+                    }
+
+                    if (json['warring']) {
+                        $('#newsletterModal .successmsg').html('<div class="alert alert-danger">' + json['warring'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+                    }
+                }
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var time = parseInt(10 * 1000);
+            setTimeout(function () {
+                $('#newsletterModal').modal('show')
+            }, time);
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#eblogmodule0').owlCarousel({
+                items: 3,
+                itemsDesktop: [1199, 3],
+                itemsDesktopSmall: [992, 2],
+                itemsTablet: [768, 2],
+                itemsMobile: [450, 1],
+                autoPlay: 6000,
+                pagination: false,
+                navigation: true,
+                navigationText: ['<i class="fa fa-angle-left fa-5x"></i>', '<i class="fa fa-angle-right fa-5x"></i>']
+            });
+        });
+        $(document).ready(function () {
+            $('.gallery').magnificPopup({
+                type: 'image',
+                delegate: 'a',
+                gallery: {
+                    enabled: true
+                }
+            });
+        });
+    </script>
+    <script>
+
+        $(document).ready(function () {
+            $('#carousel0').owlCarousel({
+                items: 6,
+                itemsDesktop: [1199, 5],
+                itemsDesktopSmall: [992, 4],
+                itemsTablet: [768, 3],
+                itemsMobile: [450, 2],
+                autoPlay: 6000,
+                pagination: false,
+                navigation: true,
+                navigationText: ['<i class="fa fa-angle-left fa-5x"></i>', '<i class="fa fa-angle-right fa-5x"></i>']
+            });
+        });
+    </script>
+
+</body>
+
+</html>
