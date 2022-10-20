@@ -14,13 +14,13 @@
     <link href="css/stylesheet.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,800&display=swap"
           rel="stylesheet">
-    <link href="css/animate.css" rel="stylesheet" />
-    <link href="css/owl.carousel.css" rel="stylesheet">
-    <link href="css/responsive.css" rel="stylesheet" />
-    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen" />
-    <link href="css/swiper.min.css" type="text/css" rel="stylesheet" media="screen" />
-    <link href="css/opencart.css" type="text/css" rel="stylesheet" media="screen" />
-    <link href="css/magnific-popup.css" type="text/css" rel="stylesheet" media="screen" />
+    <link href="../css/animate.css" rel="stylesheet" />
+    <link href="../css/owl.carousel.css" rel="stylesheet">
+    <link href="../css/responsive.css" rel="stylesheet" />
+    <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen" />
+    <link href="../css/swiper.min.css" type="text/css" rel="stylesheet" media="screen" />
+    <link href="../css/opencart.css" type="text/css" rel="stylesheet" media="screen" />
+    <link href="../css/magnific-popup.css" type="text/css" rel="stylesheet" media="screen" />
 
 </head>
 
@@ -30,49 +30,6 @@
         <img src="image/preloader.gif" id="hourglass2" alt="hourglass" title="hourglass">
     </div>
     <!-- loader end -->
-    <!-- top section -->
-    <nav id="top">
-        <div class="container-fluid">
-            <div class="row">
-                <a href="" class="phone_contact">Bienvenido(a) a nuestra tienda en línea</a>
-                <div id="top-links" class="nav pull-right">
-                    <ul class="list-inline">
-                        <li>
-                            <div class="pull-left">
-                                <form action="#" method="post" enctype="multipart/form-data" id="form-language">
-                                    <div class="btn-group">
-                                        <button class="btn btn-link dropdown-toggle" data-toggle="dropdown">
-                                            <img src="image/en-gb.png" alt="English" title="English">
-                                            <span class="hidden-xs hidden-sm hidden-md">Español</span>&nbsp;<i class="fa fa-angle-down"></i>
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li>
-                                                <button class="btn btn-link btn-block language-select" type="button"
-                                                        name="en-gb">
-                                                    <img src="image/en-gb.png" alt="English"
-                                                         title="English" /> English
-                                                </button>
-                                            </li>
-                                            <li>
-                                                <button class="btn btn-link btn-block language-select" type="button"
-                                                        name="ar">
-                                                    <img src="image/ar.png" alt="Arabic" title="Arabic" />
-                                                    Español
-                                                </button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <input type="hidden" name="code" value="" />
-                                    <input type="hidden" name="redirect" value="image" />
-                                </form>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </nav>
-    <!-- end -->
     <!-- header section -->
     <header class="main-menu">
         <div class="header_wrapper_home">
@@ -99,10 +56,10 @@
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-right megamenu">
                                     <li>
-                                        <a href="register.html">Registrarse</a>
+                                        @Html.ActionLink("Registrarse", "Registrarse", "Auth")
                                     </li>
                                     <li>
-                                        <a href="login.html">Iniciar sesión</a>
+                                        @Html.ActionLink("Iniciar Sesion","Index", "Auth")
                                     </li>
                                 </ul>
                             </div>
@@ -359,19 +316,19 @@
         </div>
     </div>
 
-    <script src="js/jquery-2.1.1.min.js" type="text/javascript"></script>
-    <script src="js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="js/wow.min.js" type="text/javascript"></script>
-    <script src="js/swiper.jquery.js" type="text/javascript"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/common.js" type="text/javascript"></script>
-    <script src="js/jquery.zoom.js"></script>
-    <script src="js/thestore.js"></script>
-    <script src="js/loader.js"></script>
-    <script src="js/search.js"></script>
-    <script src="js/scrol.js"></script>
-    <script src="js/carousel.js"></script>
-    <script src="js/jquery.magnific-popup.min.js" type="text/javascript"></script>
+    <script src="~/js/jquery-2.1.1.min.js" type="text/javascript"></script>
+    <script src="~/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="~/js/wow.min.js" type="text/javascript"></script>
+    <script src="~/js/swiper.jquery.js" type="text/javascript"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/common.js" type="text/javascript"></script>
+    <script src="~/js/jquery.zoom.js"></script>
+    <script src="~/js/thestore.js"></script>
+    <script src="~/js/loader.js"></script>
+    <script src="~/js/search.js"></script>
+    <script src="~/js/scrol.js"></script>
+    <script src="~/js/carousel.js"></script>
+    <script src="~/js/jquery.magnific-popup.min.js" type="text/javascript"></script>
     <script>
         new WOW().init();
     </script>
