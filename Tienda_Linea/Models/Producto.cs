@@ -12,7 +12,8 @@ namespace Tienda_Linea.Models
         public string Descripcion { get; set; }
         public decimal Precio { get; set; }
         public decimal Impuesto { get; set; }
-        public int Cantidad { get; set; }
+        public int Stock { get; set; }
         public char Estado { get; set; }
+        public bool Activo { get; set; }
     }
 }

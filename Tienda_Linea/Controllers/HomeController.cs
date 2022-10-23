@@ -92,7 +92,7 @@ namespace Tienda_Linea.Controllers
                 },
                 new Producto
                 {
-                    ID = 2,
+                    ID = 3,
                     Nombre = "Prueba 2",
                     Descripcion = "Descripcion de prueba 2",
                     Precio = 200000,
@@ -102,7 +102,7 @@ namespace Tienda_Linea.Controllers
                 },
                 new Producto
                 {
-                    ID = 2,
+                    ID = 4,
                     Nombre = "Prueba 2",
                     Descripcion = "Descripcion de prueba 2",
                     Precio = 200000,
@@ -113,6 +113,30 @@ namespace Tienda_Linea.Controllers
             };
             ViewBag.products = productos;
             return View();
+        }
+
+        public ActionResult Product( int id )
+        {
+            Producto product = new Producto
+            {
+                ID = 4,
+                Nombre = "Prueba 2",
+                Descripcion = "Descripcion de prueba 2",
+                Precio = 200000,
+                Impuesto = 13,
+                Cantidad = 300,
+                Estado = '1'
+            };
+            ViewBag.Producto = product;
+            bool encontrado = true;
+            if (encontrado)
+            {
+                return View();
+            }
+            else
+            {
+                return Redirect("");
+            }
         }
     }
 }

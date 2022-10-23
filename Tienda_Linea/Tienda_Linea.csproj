@@ -281,6 +281,8 @@
     <Content Include="Views\Auth\Index.cshtml" />
     <Content Include="Views\Shared\_AuthLayout.cshtml" />
     <Content Include="Views\Home\bicicletas.cshtml" />
+    <Content Include="Views\Home\product.cshtml" />
+    <Content Include="Views\Shared\_ProductLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
