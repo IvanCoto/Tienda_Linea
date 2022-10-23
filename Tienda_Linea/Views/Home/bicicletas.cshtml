@@ -1,0 +1,283 @@
+﻿@{
+
+    ViewBag.PageTitle = "Page title will be displayed on the browser tab";
+
+}
+
+<!---------catagory-banner-------->
+<div class="main_breadcrumb">
+    <div class="container-fluid">
+        <div class="row breadcrumb">
+                <h3 class="ms-5">
+                    @ViewBag.Category
+                </h3>
+        </div>
+    </div>
+</div><!------catagry banner end------>
+<!-----menu And products------>
+<div class="main_padding product_wrapper_sec  product_wrapper">
+    <div id="product-category" class="container-fluid">
+        <div class="row">
+            <aside id="column-left" class="col-sm-3 hidden-xs">
+                <style>
+                    .categories_wrapper_home ul li .head .collapsed .plus {
+                        display: block;
+                    }
+
+                    .categories_wrapper_home ul li .head .plus {
+                        display: none;
+                    }
+
+                    .categories_wrapper_home ul li .head .collapsed .minus {
+                        display: none;
+                    }
+                </style>
+                <div class="list-group categories_wrapper_home">
+                    <h4>Categories</h4>
+                    <div class="accordion" id="accordion-racing">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Racing Bicycles
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordion-racing">
+                                <div class="accordion-body">
+                                    <ul class="list-group p-0">
+                                        <li class="list-group-item p-0">
+                                            <a href="product-header.html" class="text-decoration-none">Racing Bicycle Thin Tyre (0)</a>
+                                        </li>
+                                        <li class="list-group-item p-0 mt-3">
+                                            <a href="product-header.html" class="text-decoration-none">Racing Bicycle Alminium Frame (2)</a>
+                                        </li>
+                                        <li class="list-group-item p-0 mt-3">
+                                            <a href="product-header.html" class="text-decoration-none">Racing Bicycle Down Frame (2)</a>
+                                        </li>
+                                        <li class="list-group-item p-0 mt-3">
+                                            <a href="product-header.html" class="text-decoration-none">Racing Bicycle Magnesium (3)</a>
+                                        </li>
+                                        <li class="list-group-item p-0 mt-3">
+                                            <a href="product-header.html" class="text-decoration-none">Racing Bicycle Alminium Break (4)</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion" id="accordion-tryCycles">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                    Baby Try Cycles
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordion-tryCycles">
+                                <div class="accordion-body">
+                                    <ul class="list-group p-0">
+                                        <li class="list-group-item p-0 mt-3">
+                                            <a href="product-header.html" class="text-decoration-none">Tri Cycle With Push Handle (5)</a>
+                                        </li>
+                                        <li class="list-group-item p-0 mt-3">
+                                            <a href="product-header.html" class="text-decoration-none">Tri Cycle With Back Basket (4)</a>
+                                        </li>
+                                        <li class="list-group-item p-0 mt-3">
+                                            <a href="product-header.html" class="text-decoration-none">Tri Cycle With Basket (5)</a>
+                                        </li>
+                                        <li class="list-group-item p-0 mt-3">
+                                            <a href="product-header.html" class="text-decoration-none">Tri Cycle With Plastic Tyre (5)</a>
+                                        </li>
+                                        <li class="list-group-item p-0 mt-3">
+                                            <a href="product-header.html" class="text-decoration-none">Tri Cycle With Rubber Tyre (4)</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion" id="accordion-fatBikes">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTre">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTre" aria-expanded="true" aria-controls="collapseTre">
+                                    Fat Bikes
+                                </button>
+                            </h2>
+                            <div id="collapseTre" class="accordion-collapse collapse" aria-labelledby="headingTre" data-bs-parent="#accordion-fatBikes">
+                                <div class="accordion-body">
+                                    <ul class="list-group p-0">
+                                        <li class="list-group-item p-0 mt-3">
+                                            <a href="product-header.html" class="text-decoration-none">Aliminium Frame Body (4)</a>
+                                        </li>
+                                        <li class="list-group-item p-0 mt-3">
+                                            <a href="product-header.html" class="text-decoration-none">Fat Bike Front Disc (4)</a>
+                                        </li>
+                                        <li class="list-group-item p-0 mt-3">
+                                            <a href="product-header.html" class="text-decoration-none">Iron Frame Body (4)</a>
+                                        </li>
+                                        <li class="list-group-item p-0 mt-3">
+                                            <a href="product-header.html" class="text-decoration-none">Fat Bike Back Disc (4)</a>
+                                        </li>
+                                        <li class="list-group-item p-0 mt-3">
+                                            <a href="product-header.html" class="text-decoration-none">Fat Bike Combo Disc (4)</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <div class="swiper-viewport mt-5">
+                    <div id="banner0" class="swiper-container swiper-container-horizontal swiper-container-fade">
+                        <div class="swiper-wrapper" style="transition-duration: 0ms;">
+                            <div class="swiper-slide swiper-slide-active" style="width: 278px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a href="#"><img src="~/image/dsdd-270x350.jpg" alt="HP Banner" class="img-responsive"></a></div>
+                            <div class="swiper-slide swiper-slide-next" style="width: 278px; opacity: 0; transform: translate3d(-278px, 0px, 0px); transition-duration: 0ms;"><a href="#"><img src="~/image/ssss-270x350.jpg" alt="HP Banner2" class="img-responsive"></a></div>
+                        </div>
+                    </div>
+                </div>
+                <script type="text/javascript">
+<!--
+                    $('#banner0').swiper({
+                        effect: 'fade',
+                        autoplay: 2500,
+                        autoplayDisableOnInteraction: false
+                    });
+                    --></script>
+            </aside>
+
+            <div id="content" class="col-sm-9">
+                <h3>
+                    @ViewBag.Category
+                </h3>
+                <div class="row row_category">
+                    <div class="col-sm-2 category_banner"> 
+                        <div class="category_banner">
+                            <a href="product.html">
+                                <img src="~/image/png13.png" alt="Racing Bicycle Alminium Break" title="Racing Bicycle Alminium Break" class="img-thumbnail banner-images">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-10 card">
+                        <div class="card-body">
+                            <h4 class="card-title">Caracteristicas</h4>
+                            <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    @foreach (Tienda_Linea.Models.Producto product in ViewBag.products)
+                    {
+                        <div class="col-4 item product-layout fadeInUp">
+                            <div class="product-thumb transition">
+                                <div class="image">
+                                    <!--image -->
+                                    <a href="product-header.html">
+                                        <img src="~/image/png1.png" alt="Bicycle Accessories"
+                                             title="Bicycle Accessories" class="img-responsive" />
+                                        <img src="~/image/png3.png" alt="Bicycle Accessories"
+                                             title="Bicycle Accessories"
+                                             class="img-responsive hover-image" />
+                                    </a>
+                                    <!--hover buttons -->
+                                    <div class="hover-button button-group ">
+                                        <a href="product-header.html">
+                                            <button type="button" class="addtocart" data-toggle="tooltip"
+                                                    data-placement="left" data-original-title="Add to Cart">
+                                                <i class="fa fa-shopping-cart"></i>
+                                            </button>
+                                        </a>
+                                        <div class="custom-button-group">
+                                            <a class="quickviewopen" href="product.html"
+                                               data-toggle="tooltip" data-placement="left"
+                                               data-original-title="Quick View">
+                                                <i class="fa fa-eye"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--hover buttons end-->
+                                <!--products text matter -->
+                                <div class="caption">
+                                    <div class="rate-and-title">
+                                        <h4>
+                                            <a href="product-header.html">@Html.Label(product.Nombre)</a>
+                                        </h4>
+                                        <p class="d-flex price">@Html.Label("$" + product.Precio.ToString())</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <script>
+                    $('.quickviewopen').magnificPopup({
+                        disableOn: 700,
+                        type: 'iframe',
+                        mainClass: 'mfp-fade',
+                        removalDelay: 160,
+                        preloader: true,
+                        fixedContentPos: true
+                    });
+
+                    $(document).ready(function () {
+                        $('#featured_product_filter').owlCarousel({
+                            items: 5,
+                            itemsDesktop: [1199, 4],
+                            itemsDesktopSmall: [992, 3],
+                            itemsTablet: [768, 2],
+                            itemsMobile: [450, 1],
+                            autoPlay: 6000,
+                            pagination: false,
+                            navigation: true,
+                            navigationText: ['<i class="fa fa-angle-left fa-5x"></i>', '<i class="fa fa-angle-right fa-5x"></i>']
+                        });
+                    });
+
+
+                    $(document).ready(function () {
+                        $('#latest_product_filter').owlCarousel({
+                            items: 5,
+                            itemsDesktop: [1199, 4],
+                            itemsDesktopSmall: [992, 3],
+                            itemsTablet: [768, 2],
+                            itemsMobile: [450, 1],
+                            autoPlay: 6000,
+                            pagination: false,
+                            navigation: true,
+                            navigationText: ['<i class="fa fa-angle-left fa-5x"></i>', '<i class="fa fa-angle-right fa-5x"></i>']
+                        });
+                    });
+
+
+                    $(document).ready(function () {
+                        $('#bestseller_product_filter').owlCarousel({
+                            items: 5,
+                            itemsDesktop: [1199, 4],
+                            itemsDesktopSmall: [992, 3],
+                            itemsTablet: [768, 2],
+                            itemsMobile: [450, 1],
+                            autoPlay: 6000,
+                            pagination: false,
+                            navigation: true,
+                            navigationText: ['<i class="fa fa-angle-left fa-5x"></i>', '<i class="fa fa-angle-right fa-5x"></i>']
+                        });
+                    });
+
+
+                    $(document).ready(function () {
+                        $('#special_product_filter').owlCarousel({
+                            items: 5,
+                            itemsDesktop: [1199, 4],
+                            itemsDesktopSmall: [992, 3],
+                            itemsTablet: [768, 2],
+                            itemsMobile: [450, 1],
+                            autoPlay: 6000,
+                            pagination: false,
+                            navigation: true,
+                            navigationText: ['<i class="fa fa-angle-left fa-5x"></i>', '<i class="fa fa-angle-right fa-5x"></i>']
+                        });
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</div>

@@ -7,21 +7,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Bike Store</title>
     <meta name="keywords" content="Latest Blog" />
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen" />
-    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+    <link href="~/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700&display=swap" rel="stylesheet">
-    <link href="css/stylesheet.css" rel="stylesheet">
+    <link href="~/css/stylesheet.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,800&display=swap"
           rel="stylesheet">
-    <link href="../css/animate.css" rel="stylesheet" />
-    <link href="../css/owl.carousel.css" rel="stylesheet">
-    <link href="../css/responsive.css" rel="stylesheet" />
-    <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen" />
-    <link href="../css/swiper.min.css" type="text/css" rel="stylesheet" media="screen" />
-    <link href="../css/opencart.css" type="text/css" rel="stylesheet" media="screen" />
-    <link href="../css/magnific-popup.css" type="text/css" rel="stylesheet" media="screen" />
-
+    <link href="~/css/animate.css" rel="stylesheet" />
+    <link href="~/css/owl.carousel.css" rel="stylesheet">
+    <link href="~/css/responsive.css" rel="stylesheet" />
+    <link href="~/css/style.css" type="text/css" rel="stylesheet" media="screen" />
+    <link href="~/css/swiper.min.css" type="text/css" rel="stylesheet" media="screen" />
+    <link href="~/css/opencart.css" type="text/css" rel="stylesheet" media="screen" />
+    <link href="~/css/magnific-popup.css" type="text/css" rel="stylesheet" media="screen" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 </head>
 
 <body>
@@ -39,7 +39,7 @@
                     <div class="col-sm-4 rtl_logo">
                         <div id="logo">
                             <a href="#">
-                                <img src="image/logo1.png" title="Your Store" alt="Your Store"
+                                <img src="~/image/logo1.png" title="Your Store" alt="Your Store"
                                      class="img-responsive" />
                             </a>
                         </div>
@@ -48,32 +48,27 @@
                     <div class="col-sm-8">
                         <div class="text_account_wrapper pull-right">
                             <div class="header_transaction header_account">
-                                <a href="#" title="My Account" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-user-o faicons"></i> <span class="hidden-xs hidden-sm hidden-md">
+                                <a href="#" title="My Account" class="dropdown-toggle text-decoration-none" data-toggle="dropdown">
+                                    <i class="fa fa-user-o faicons"></i>
+                                    <span class="hidden-xs hidden-sm hidden-md">
                                         Mi
                                         cuenta
-                                    </span> <span class="caret"></span>
+                                    </span>
                                 </a>
-                                <ul class="dropdown-menu dropdown-menu-right megamenu">
+                                <ul class="dropdown-menu dropdown-menu-right">
                                     <li>
-                                        @Html.ActionLink("Registrarse", "Registrarse", "Auth")
+                                        @Html.ActionLink("Registrarse", "Registrarse", "Auth", null, new { @class = "text-decoration-none" })
                                     </li>
                                     <li>
-                                        @Html.ActionLink("Iniciar Sesion","Index", "Auth")
+                                        @Html.ActionLink("Iniciar Sesion", "Index", "Auth", null, new { @class = "text-decoration-none" })
                                     </li>
                                 </ul>
-                            </div>
-                            <!-- wishlist -->
-                            <div class="header_transaction header_wishlist">
-                                <a href="wish-list.html" id="wishlist-total" title="Wish List (0)">
-                                    <i class="fa fa-heart-o faicons"></i> <span class="hidden-xs hidden-sm hidden-md">Deseos</span>
-                                </a>
                             </div>
                             <!-- cart -->
                             <div class="header_transaction heder_cart">
                                 <div id="cart" class="btn-group btn-block">
                                     <button type="button" data-toggle="dropdown" data-loading-text="Loading..."
-                                            class="btn btn-inverse btn-block btn-lg dropdown-toggle">
+                                            class="btn btn-inverse btn-block btn-lg ">
                                         <p class="cart_data_p">
                                             <i class="fa fa-shopping-cart faicons"></i> Carrito <span class="cart_qut">0</span>
                                         </p>
@@ -83,27 +78,6 @@
                                             <p class="text-center">Your shopping cart is empty!</p>
                                         </li>
                                     </ul>
-                                </div>
-                            </div>
-                            <!-- search -->
-                            <div class=" search_and_cart_wrapper_header">
-                                <div class="text-right cart-menu">
-                                    <div class="search_wrapper">
-                                        <a class="ebsearch"><i class="fa fa-search"></i></a>
-                                    </div>
-                                </div>
-                                <div id="search" class="input-group">
-                                    <span class="close">x</span>
-                                    <div class="bikes_search">
-                                        <p>Encuentra lo que buscas</p>
-                                    </div>
-                                    <input value="" class="esearch" name="search" type="search"
-                                           placeholder="Search here">
-                                    <span class="input-group-btn searchicon">
-                                        <button type="button" class="btn btn-default btn-lg">
-                                            <i class="fa fa-search"></i>
-                                        </button>
-                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -117,90 +91,93 @@
     <div class="header_menu">
         <div class="container-fluid">
             <div class="row">
-                <nav id="menu" class="navbar">
-                    <div class="navbar-header">
-                        <span id="category" class="visible-xs"> Categorias </span>
-                        <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse"
-                                data-target=".navbar-ex1-collapse">
-                            <i class="fa fa-bars"></i>
-                        </button>
-                    </div>
-                    <div class="collapse navbar-collapse navbar-ex1-collapse">
-                        <ul class="nav navbar-nav">
-                            <li>
-                                <a href="index.html">Inicio</a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle"
-                                   data-toggle="dropdown">Bicicletas</a>
-                                <div class="dropdown-menu megamenu">
-                                    <div class="dropdown-inner">
-                                        <ul class="list-unstyled">
-                                            <li><a href="catagory.html">Triatlon</a></li>
-                                            <li><a href="catagory.html">Cross / Gravel</a></li>
-                                            <li><a href="catagory.html">Mountain</a></li>
-                                            <li><a href="catagory.html">Track</a></li>
-                                            <li><a href="catagory.html">Urban</a></li>
+                <nav class="navbar navbar-expand-lg bg-light">
+                    <div class="container-fluid">
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav d-flex">
+                                <li class="nav-item col-3">
+                                    @Html.ActionLink("Inicio", "Index", "Home", new { @class = "nav-link fs-3" })
+                                </li>
+                                <li class="dropdown nav-item col-3">
+                                    <a href="#" class="dropdown-toggle nav-link fs-3"
+                                       data-toggle="dropdown">Bicicletas</a>
+                                    <div class="dropdown-menu megamenu">
+                                        <div class="dropdown-inner">
+                                            <ul class="list-group">
+                                                <li class="list-group-item">
+                                                    @Html.ActionLink("Triatlon", "Bicicletas", "Home", new { category = "triatlon" }, new { @class = "text-decoration-none" })
+                                                </li>
+                                                <li class="list-group-item">
+                                                    @Html.ActionLink("Cross / Grave", "Bicicletas", "Home", new { category = "Cross / Gravel" }, new { @class = "text-decoration-none" })
+                                                </li>
+                                                <li class="list-group-item">
+                                                    @Html.ActionLink("Mountain", "Bicicletas", "Home", new { category = "Mountain" }, new { @class = "text-decoration-none" })
+                                                </li>
+                                                <li class="list-group-item">
+                                                    @Html.ActionLink("Track", "Bicicletas", "Home", new { category = "Track" }, new { @class = "text-decoration-none" })
+                                                </li>
+                                                <li class="list-group-item">
+                                                    @Html.ActionLink("Urban", "Bicicletas", "Home", new { category = "Urban" }, new { @class = "text-decoration-none" })
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="dropdown nav-item col-3">
+                                    <a href="#" class="dropdown-toggle nav-link fs-3"
+                                       data-toggle="dropdown">Accesorios</a>
+                                    <div class="dropdown-menu megamenu">
+                                        <div class="dropdown-inner">
+                                            <ul class="list-group">
+                                                <li class="list-group-item">
+                                                    <a href="catagory.html" class="text-decoration-none">Cascos</a>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <a href="catagory.html" class="text-decoration-none">Partes</a>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <a href="catagory.html" class="text-decoration-none">Zapatos</a>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <a href="catagory.html" class="text-decoration-none">Guantes</a>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <a href="catagory.html" class="text-decoration-none">Reparación</a>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <a href="catagory.html" class="text-decoration-none">Botellas</a>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <a href="catagory.html" class="text-decoration-none">Mostrar todas las categorias</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="dropdown nav-item col-3">
+                                    <a href="#" class="dropdown-toggle nav-link fs-3 mx-3" data-toggle="dropdown">
+                                        Productos de
+                                        nutrición
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <ul class="list-group">
+                                            <li class="list-group-item">
+                                                <a class="text-decoration-none" href="catagory.html">Hidratantes</a>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <a class="text-decoration-none" href="catagory.html">Energéticos</a>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <a class="text-decoration-none" href="catagory.html">Barras</a>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <a class="text-decoration-none" href="catagory.html">Mostrar todos los productos</a>
+                                            </li>
                                         </ul>
                                     </div>
-                                    <a href="catagory.html" class="see-all">Todas las categorias</a>
-                                </div>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle"
-                                   data-toggle="dropdown">Accesorios</a>
-                                <div class="dropdown-menu megamenu">
-                                    <div class="dropdown-inner">
-                                        <ul class="list-unstyled">
-                                            <li>
-                                                <a href="catagory.html">Cascos</a>
-                                            </li>
-                                            <li>
-                                                <a href="catagory.html">Partes</a>
-                                            </li>
-                                            <li>
-                                                <a href="catagory.html">Zapatos</a>
-                                            </li>
-                                            <li>
-                                                <a href="catagory.html">Guantes</a>
-                                            </li>
-                                            <li>
-                                                <a href="catagory.html">Reparación</a>
-                                            </li>
-                                            <li>
-                                                <a href="catagory.html">Botellas</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <a href="catagory.html" class="see-all">Mostrar todas las categorias</a>
-                                </div>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    Productos de
-                                    nutrición
-                                </a>
-                                <div class="dropdown-menu megamenu">
-                                    <div class="dropdown-inner">
-                                        <ul class="list-unstyled">
-                                            <li>
-                                                <a href="catagory.html">Hidratantes</a>
-                                            </li>
-                                            <li>
-                                                <a href="catagory.html">Energéticos</a>
-                                            </li>
-                                            <li>
-                                                <a href="catagory.html">Barras</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <a href="catagory.html" class="see-all">Mostrar todos los productos</a>
-                                </div>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Taller</a>
-                            </li>
-                        </ul>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </nav>
             </div>
@@ -208,9 +185,9 @@
     </div>
     <!--menu end-->
     <!--
-        
+
         Contenido
-        
+
     -->
 
     @RenderBody()
@@ -224,25 +201,9 @@
                         <div class="footer-inner-matter">
                             <h3 class="wow fadeInUp">Contacto</h3>
                             <ul>
-                                <li>
-                                    <img src="image/icon-phone.png">
-                                    <p>Atención al cliente</p><span>
-                                        <i class="fa fa-volume-control-phone"></i>(+800)
-                                        123456 789
-                                    </span>
-                                </li>
-                                <li><i class="fa fa-map-marker"></i> 622 Vernon Drive Flushing, NY 11354</li>
-                                <li class="email"><i class="fa fa-envelope"></i> company123@gmail.com</li>
+                                <li><i class="fa fa-map-marker"></i> SJ, Costa Rica</li>
+                                <li class="email"><i class="fa fa-envelope"></i>univeridad@ufide.ac.cr</li>
                             </ul>
-                            <div class="social_media_wrapper">
-                                <ul>
-                                    <li class="facebook"><a href=""><i class="fa fa-facebook-square"></i></a></li>
-                                    <li class="skype"><a href=""><i class="fa fa-skype"></i></a></li>
-                                    <li class="youtube"><a href=""><i class="fa fa-youtube-square"></i></a></li>
-                                    <li class="google"><a href=""><i class="fa fa-google-plus-square"></i></a></li>
-                                    <li class="linkedin"><a href=""><i class="fa fa-linkedin-square"></i></a></li>
-                                </ul>
-                            </div>
                             <div class="clear"></div>
                         </div>
                     </div>
@@ -253,7 +214,6 @@
                             <h3 class="wow fadeInUp">Información</h3>
                             <ul class="list-unstyled">
                                 <li><a href="about.html" class="wow fadeInUp">Sobre nosotros</a></li>
-                                <li><a href="#" class="wow fadeInUp"> Información de envío</a></li>
                                 <li><a href="#" class="wow fadeInUp"> Políticas de privacidad</a></li>
                                 <li><a href="#" class="wow fadeInUp"> Terminos &amp; Condiciones</a></li>
                             </ul>
@@ -262,49 +222,10 @@
                     </div>
                     <!-- / information end-->
                     <!-- extra -->
-                    <div class="col-sm-3 col_footer footer_padding">
-                        <div class="footer-inner-matter">
-                            <h3 class="wow fadeInUp">Extras</h3>
-                            <ul class="list-unstyled">
-                                <li><a href="contact.html" class="wow fadeInUp"> Contacto</a></li>
-                                <li><a href="sitemap.html" class="wow fadeInUp"> Mapa del sitio</a></li>
-                            </ul>
-                            <div class="clear"></div>
-                        </div>
-                    </div>
 
-                    <div class="clear"> </div>
-                    <!--- copy-right-area -->
-                    <div class=" social_footer copy_right_wrapper">
-                        <div class="col-sm-6 rtl_text">
-                            <div class="copy-right">
-                                <p class="wow fadeInDown   animated"
-                                   style="visibility: visible; animation-name: fadeInDown;">
-                                    © Copyright 2020 by Bike
-                                    Store. All right Reserved - Design By <a href="https://www.templatebazaar.in/"
-                                                                             target="_blank">Template bazaar</a>
-                                </p>
-                            </div>
-                        </div>
-                        <!-------/ end copyright----------->
-                        <!--- payment_links -->
-                        <div class="col-sm-6 rtl_text">
-                            <div class="payment_method_footer">
-                                <div class="payment_option_methods">
-                                    <ul>
-                                        <li><a href=""><img src="image/payment-1.png"></a></li>
-                                        <li><a href=""><img src="image/payment-2.png"></a></li>
-                                        <li><a href=""><img src="image/payment-3.png"></a></li>
-                                        <li><a href=""><img src="image/payment-4.png"></a></li>
-                                        <li><a href=""><img src="image/payment-5.png"></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="clear"> </div>
-                    </div>
                 </div>
             </div>
+        </div>
         </div>
         <!--------/ end payment link------------>
     </footer>
@@ -586,6 +507,9 @@
             });
         });
     </script>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
 
 </body>
 
