@@ -46,24 +46,34 @@
                     </div>
                     <!-- my account -->
                     <div class="col-sm-8">
-                        <div class="text_account_wrapper pull-right">
-                            <div class="header_transaction header_account">
-                                <a href="#" title="My Account" class="dropdown-toggle text-decoration-none" data-toggle="dropdown">
-                                    <i class="fa fa-user-o faicons"></i>
-                                    <span class="hidden-xs hidden-sm hidden-md">
-                                        Mi
-                                        cuenta
-                                    </span>
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-right">
-                                    <li>
-                                        @Html.ActionLink("Registrarse", "Index", "Auth", null, new { @class = "text-decoration-none" })
-                                    </li>
-                                    <li>
-                                        @Html.ActionLink("Iniciar Sesion", "Index", "Auth", null, new { @class = "text-decoration-none" })
-                                    </li>
-                                </ul>
-                            </div>
+                        <div class="text_account_wrapper pull-right d-flex">
+                            @if (Session["NombreUsuario"] == null)
+                            {
+                                <div class="header_transaction header_account">
+
+                                    <a href="#" title="My Account" class="dropdown-toggle text-decoration-none" data-toggle="dropdown">
+                                        <i class="fa fa-user-o faicons"></i>
+                                        <span class="hidden-xs hidden-sm hidden-md">
+                                            Mi
+                                            cuenta
+                                        </span>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li>
+                                            @Html.ActionLink("Registrarse", "Index", "Auth", null, new { @class = "text-decoration-none" })
+                                        </li>
+                                        <li>
+                                            @Html.ActionLink("Iniciar Sesion", "Index", "Auth", null, new { @class = "text-decoration-none" })
+                                        </li>
+                                    </ul>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="header_transaction">
+                                    <p class="fs-4">@Session["NombreUsuario"]</p>
+                                </div>
+                            }
                             <!-- cart -->
                             <div class="header_transaction heder_cart">
                                 <div id="cart" class="btn-group btn-block">
@@ -80,6 +90,14 @@
                                     </ul>
                                 </div>
                             </div>
+                            @if (Session["NombreUsuario"] != null)
+                            {
+                                <div>
+                                    <a href="@Url.Action("CerrarSesion", "Auth")" class="btn btn-danger ms-4">
+                                        Cerrar Sesion
+                                    </a>
+                                </div>
+                            }
                         </div>
                     </div>
                 </div>
@@ -87,108 +105,6 @@
         </div>
     </header>
     <!-- header section end-->
-    <!--menu-->
-    <div class="header_menu">
-        <div class="container-fluid">
-            <div class="row">
-                <nav class="navbar navbar-expand-lg bg-light">
-                    <div class="container-fluid">
-                        <div class="collapse navbar-collapse" id="navbarNav">
-                            <ul class="navbar-nav d-flex">
-                                <li class="nav-item col-3">
-                                    @Html.ActionLink("Inicio", "Index", "Home", new { @class = "nav-link fs-3" })
-                                </li>
-                                <li class="dropdown nav-item col-3">
-                                    <a href="#" class="dropdown-toggle nav-link fs-3"
-                                       data-toggle="dropdown">Bicicletas</a>
-                                    <div class="dropdown-menu megamenu">
-                                        <div class="dropdown-inner">
-                                            <ul class="list-group">
-                                                <li class="list-group-item">
-                                                    @Html.ActionLink("Triatlon", "Bicicletas", "Home", new { category = "triatlon" }, new { @class = "text-decoration-none" })
-                                                </li>
-                                                <li class="list-group-item">
-                                                    @Html.ActionLink("Cross / Grave", "Bicicletas", "Home", new { category = "Cross / Gravel" }, new { @class = "text-decoration-none" })
-                                                </li>
-                                                <li class="list-group-item">
-                                                    @Html.ActionLink("Mountain", "Bicicletas", "Home", new { category = "Mountain" }, new { @class = "text-decoration-none" })
-                                                </li>
-                                                <li class="list-group-item">
-                                                    @Html.ActionLink("Track", "Bicicletas", "Home", new { category = "Track" }, new { @class = "text-decoration-none" })
-                                                </li>
-                                                <li class="list-group-item">
-                                                    @Html.ActionLink("Urban", "Bicicletas", "Home", new { category = "Urban" }, new { @class = "text-decoration-none" })
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="dropdown nav-item col-3">
-                                    <a href="#" class="dropdown-toggle nav-link fs-3"
-                                       data-toggle="dropdown">Accesorios</a>
-                                    <div class="dropdown-menu megamenu">
-                                        <div class="dropdown-inner">
-                                            <ul class="list-group">
-                                                <li class="list-group-item">
-                                                    <a href="catagory.html" class="text-decoration-none">Cascos</a>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <a href="catagory.html" class="text-decoration-none">Partes</a>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <a href="catagory.html" class="text-decoration-none">Zapatos</a>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <a href="catagory.html" class="text-decoration-none">Guantes</a>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <a href="catagory.html" class="text-decoration-none">Reparación</a>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <a href="catagory.html" class="text-decoration-none">Botellas</a>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <a href="catagory.html" class="text-decoration-none">Mostrar todas las categorias</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="dropdown nav-item col-3">
-                                    <a href="#" class="dropdown-toggle nav-link fs-3 mx-3" data-toggle="dropdown">
-                                        Productos de
-                                        nutrición
-                                    </a>
-                                    <div class="dropdown-menu">
-                                        <ul class="list-group">
-                                            <li class="list-group-item">
-                                                <a class="text-decoration-none" href="catagory.html">Hidratantes</a>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <a class="text-decoration-none" href="catagory.html">Energéticos</a>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <a class="text-decoration-none" href="catagory.html">Barras</a>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <a class="text-decoration-none" href="catagory.html">Mostrar todos los productos</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-        </div>
-    </div>
-    <!--menu end-->
-    <!--
-
-        Contenido
-
-    -->
 
     @RenderBody()
 

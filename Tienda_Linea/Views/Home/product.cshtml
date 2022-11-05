@@ -2,6 +2,8 @@
     Layout = "~/Views/Shared/_ProductLayout.cshtml";
 }
 
+@Html.AntiForgeryToken()
+
 <div class="main_padding mt-5">
     <div id="quickproduct" class="container-fluid popup_products_page mt-5" style="background-color:transparent; max-width: 100%;">
         <div id="product-product mt-5">
@@ -47,38 +49,43 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="product_right">
-                            <p class="stock_option">In Stock</p>
-                            <h1>Kids Bicycle</h1>
+                            <p class="stock_option">Disponible</p>
+                            <h1>
+                                @ViewBag.Producto.Nombre
+                            </h1>
                             <ul class="list-unstyled main-price">
                                 <div class="price">
-                                    <li>
-                                        <h2>$122.00</h2>
-                                    </li>
-                                </div>
-                                <li>Ex Tax: $100.00</li>
-                                <li>Price in reward points: 400</li>
+                                <li>
+                                    <h2>
+                                        @ViewBag.Producto.Precio
+                                    </h2>
+                                </li>
+                        </div>
+                        <li>Impuestos: $@ViewBag.Producto.Impuesto</li>
 
-                            </ul>
+                        </ul>
                         <hr />
                         <div id="product">
-                            <h1>Available Options</h1>
                             <div class="form-group plus-minus-input">
-                                <div class="qty_option_wrapper row">
-                                    <div col-5>
-                                        <label class="qty_option">Cantidad:</label>
-                                        <input class="input-group-field count_option" type="number" name="quantity" value="1" id="input-quantity" class="form-control" />
-                                        <input type="hidden" name="product_id" value="47" />
+                                @using (Html.BeginForm("AgregarCarrito", "Home", FormMethod.Post))
+                                {
+                                    <div class="qty_option_wrapper row">
+                                        <div class="col">
+                                            <label class="qty_option">Cantidad:</label>
+                                            <input class="input-group-field count_option" type="number" name="cantidad" value="1" id="cantidad" class="form-control" />
+                                            <input type="hidden" name="product_id" value="47" />
+                                        </div>
+                                        <div class="input-group-button add_to_cart_option mt-3">
+                                            <a href="wish-list.html">
+                                                <button type="submit" id="button-cart" data-loading-text="Loading..." class="btn btn-primary btn-lg btn-block">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    Add to Cart
+                                                </button>
+                                            </a>
+                                        </div>
                                     </div>
-                                    <div class="input-group-button add_to_cart_option col-5">
-                                        <a href="wish-list.html">
-                                            <button type="button" id="button-cart" data-loading-text="Loading..." class="btn btn-primary btn-lg btn-block">
-                                                <i class="fa fa-shopping-cart"></i>
-                                                Add to Cart
-                                            </button>
-                                        </a>
-                                    </div>
-                                </div>
-                                </div>
+                                }
+                            </div>
                             <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-515eeaf54693130e"></script>
                             <!-- AddThis Button END  -->
                         </div>

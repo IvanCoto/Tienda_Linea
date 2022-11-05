@@ -2,6 +2,33 @@
     ViewBag.Title = "Home Page";
 }
 
+<!--menu-->
+<div class="header_menu">
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="navbar navbar-expand-lg bg-light">
+                <div class="container-fluid">
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav row w-100">
+                            <li class="nav-item col-2">
+                                @Html.ActionLink("Inicio", "Index", "Home", new { @class = "nav-link fs-3" })
+                            </li>
+                            @foreach (Tienda_Linea.Models.Categoria categoria in ViewBag.categories)
+                            {
+                                <li class="dropdown nav-item col-2">
+                                    <a href="@Url.Action("Bicicletas", "Home")" class="nav-link fs-3">
+                                        @categoria.Descripcion
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+<!--menu end-->
 <div id="common-home" class="home-page">
     <div class="row">
         <div id="content" class="col-sm-12">
@@ -31,13 +58,6 @@
         </div>
     </div>
 </div>
-
-	</div>
-
-
-<!-- / three banners end -->
-	</div>
-
 <!-- shop by category -->
 <div id="category" class="shop_by_category">
     <div class="container-fluid">
@@ -46,266 +66,30 @@
         </div>
         <div class="product_mail-wrapper row product-section">
             <div id="category_block" class="owl-carousel">
-                <div class="product-layout col-lg-12 col-md-4 col-sm-6 col-xs-12 wow fadeInUp">
-                    <div class="category-thumb transition">
-                        <ul class="category_grid category_style_section">
-                            <li>
-                                <figure>
-                                    <div class="image">
-                                        <a href="#">
-                                            <img src="~/image/png10.png" alt="Racing Bicycles"
-                                                 title="Racing Bicycles" class="img-responsive" />
-                                        </a>
-                                    </div>
-                                    <figcaption>
-                                        <h3><a href="#" class="text-decoration-none text-dark">Triatlon</a></h3>
-                                    </figcaption>
-                                </figure>
-                            </li>
-                        </ul>
+                @foreach (Tienda_Linea.Models.Categoria categoria in ViewBag.categories)
+                {
+                    <div class="product-layout col-lg-12 col-md-4 col-sm-6 col-xs-12 wow fadeInUp">
+                        <div class="category-thumb transition">
+                            <ul class="category_grid category_style_section">
+                                <li>
+                                    <figure>
+                                        <div class="image">
+                                            <a href="#">
+                                                <img src="~/image/png10.png" alt="Racing Bicycles"
+                                                     title="Racing Bicycles" class="img-responsive" />
+                                            </a>
+                                        </div>
+                                        <figcaption>
+                                            <h3>
+                                                @Html.ActionLink(categoria.Nombre, "Bicicletas", "Home", new { category = categoria.Nombre }, new { @class = "text-decoration-none" })
+                                            </h3>
+                                        </figcaption>
+                                    </figure>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                <div class="product-layout col-lg-12 col-md-4 col-sm-6 col-xs-12 wow fadeInUp">
-                    <div class="category-thumb transition">
-                        <ul class="category_grid category_style_section">
-                            <li>
-                                <figure>
-                                    <div class="image">
-                                        <a href="#">
-                                            <img src="~/image/PNG12.png" alt="Track Bicycles"
-                                                 title="Track Bicycles" class="img-responsive" />
-                                        </a>
-                                    </div>
-                                    <figcaption>
-                                        <h3><a href="#" class="text-decoration-none text-dark">Cross / Gravel</a></h3>
-                                    </figcaption>
-                                </figure>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="product-layout col-lg-12 col-md-4 col-sm-6 col-xs-12 wow fadeInUp">
-                    <div class="category-thumb transition">
-                        <ul class="category_grid category_style_section">
-                            <li>
-                                <figure>
-                                    <div class="image">
-                                        <a href="#">
-                                            <img src="~/image/png6.png" alt="Hybrid Bicycles"
-                                                 title="Hybrid Bicycles" class="img-responsive" />
-                                        </a>
-                                    </div>
-                                    <figcaption>
-                                        <h3><a href="#" class="text-decoration-none text-dark">Mountain</a></h3>
-
-                                    </figcaption>
-                                </figure>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="product-layout col-lg-12 col-md-4 col-sm-6 col-xs-12 wow fadeInUp">
-                    <div class="category-thumb transition">
-                        <ul class="category_grid category_style_section">
-                            <li>
-                                <figure>
-                                    <div class="image">
-                                        <a href="#">
-                                            <img src="~/image/png1.png"
-                                                 alt="Motorized Bicycles" title="Motorized Bicycles"
-                                                 class="img-responsive" />
-                                        </a>
-                                    </div>
-                                    <figcaption>
-                                        <h3><a href="#" class="text-decoration-none text-dark">Track</a></h3>
-
-                                    </figcaption>
-                                </figure>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="product-layout col-lg-12 col-md-4 col-sm-6 col-xs-12 wow fadeInUp">
-                    <div class="category-thumb transition">
-                        <ul class="category_grid category_style_section">
-                            <li>
-                                <figure>
-                                    <div class="image">
-                                        <a href="#">
-                                            <img src="~/image/PNG12.png" alt="Baby Try Cycles"
-                                                 title="Baby Try Cycles" class="img-responsive" />
-                                        </a>
-                                    </div>
-                                    <figcaption>
-                                        <h3><a href="#" class="text-decoration-none text-dark">Urban</a></h3>
-
-                                    </figcaption>
-                                </figure>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="product-layout col-lg-12 col-md-4 col-sm-6 col-xs-12 wow fadeInUp">
-                    <div class="category-thumb transition">
-                        <ul class="category_grid category_style_section">
-                            <li>
-                                <figure>
-                                    <div class="image">
-                                        <a href="#">
-                                            <img src="~/image/png13.png"
-                                                 alt="Tri Cycle With Plastic Tyre"
-                                                 title="Tri Cycle With Plastic Tyre" class="img-responsive" />
-                                        </a>
-                                    </div>
-                                    <figcaption>
-                                        <h3><a href="#" class="text-decoration-none text-dark">Accesorios</a></h3>
-
-                                    </figcaption>
-                                </figure>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="product-layout col-lg-12 col-md-4 col-sm-6 col-xs-12 wow fadeInUp">
-                    <div class="category-thumb transition">
-                        <ul class="category_grid category_style_section">
-                            <li>
-                                <figure>
-                                    <div class="image">
-                                        <a href="#">
-                                            <img src="~/image/png15.png"
-                                                 alt="Tri Cycle With Rubber Tyre" title="Tri Cycle With Rubber Tyre"
-                                                 class="img-responsive" />
-                                        </a>
-                                    </div>
-                                    <figcaption>
-                                        <h3><a href="#" class="text-decoration-none text-dark">Partes</a></h3>
-                                    </figcaption>
-                                </figure>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="product-layout col-lg-12 col-md-4 col-sm-6 col-xs-12 wow fadeInUp">
-                    <div class="category-thumb transition">
-                        <ul class="category_grid category_style_section">
-                            <li>
-                                <figure>
-                                    <div class="image">
-                                        <a href="#">
-                                            <img src="~/image/png16.png" alt="Fat Bikes"
-                                                 title="Fat Bikes" class="img-responsive" />
-                                        </a>
-                                    </div>
-                                    <figcaption>
-                                        <h3><a href="#" class="text-decoration-none text-dark">Botellas</a></h3>
-                                    </figcaption>
-                                </figure>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="product-layout col-lg-12 col-md-4 col-sm-6 col-xs-12 wow fadeInUp">
-                    <div class="category-thumb transition">
-                        <ul class="category_grid category_style_section">
-                            <li>
-                                <figure>
-                                    <div class="image">
-                                        <a href="#">
-                                            <img src="~/image/png1.png"
-                                                 alt="Tri Cycle With Back Basket" title="Tri Cycle With Back Basket"
-                                                 class="img-responsive" />
-                                        </a>
-                                    </div>
-                                    <figcaption>
-                                        <h3><a href="#" class="text-decoration-none text-dark">Zapatos</a></h3>
-
-                                    </figcaption>
-                                </figure>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="product-layout col-lg-12 col-md-4 col-sm-6 col-xs-12 wow fadeInUp">
-                    <div class="category-thumb transition">
-                        <ul class="category_grid category_style_section">
-                            <li>
-                                <figure>
-                                    <div class="image">
-                                        <a href="#">
-                                            <img src="~/image/png5.png"
-                                                 alt="Fat Bike Front Disc" title="Fat Bike Front Disc"
-                                                 class="img-responsive" />
-                                        </a>
-                                    </div>
-                                    <figcaption>
-                                        <h3><a href="#" class="text-decoration-none text-dark">Guantes</a></h3>
-                                    </figcaption>
-                                </figure>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="product-layout col-lg-12 col-md-4 col-sm-6 col-xs-12 wow fadeInUp">
-                    <div class="category-thumb transition">
-                        <ul class="category_grid category_style_section">
-                            <li>
-                                <figure>
-                                    <div class="image">
-                                        <a href="#">
-                                            <img src="~/image/png3.png"
-                                                 alt="Fat Bike Back Disc" title="Fat Bike Back Disc"
-                                                 class="img-responsive" />
-                                        </a>
-                                    </div>
-                                    <figcaption>
-                                        <h3><a href="#" class="text-decoration-none text-dark">Reparación</a></h3>
-                                    </figcaption>
-                                </figure>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="product-layout col-lg-12 col-md-4 col-sm-6 col-xs-12 wow fadeInUp">
-                    <div class="category-thumb transition">
-                        <ul class="category_grid category_style_section">
-                            <li>
-                                <figure>
-                                    <div class="image">
-                                        <a href="#">
-                                            <img src="~/image/png2.png"
-                                                 alt="Aliminium Frame Body" title="Aliminium Frame Body"
-                                                 class="img-responsive" />
-                                        </a>
-                                    </div>
-                                    <figcaption>
-                                        <h3><a href="#" class="text-decoration-none text-dark">Hidratación</a></h3>
-                                    </figcaption>
-                                </figure>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="product-layout col-lg-12 col-md-4 col-sm-6 col-xs-12 wow fadeInUp">
-                    <div class="category-thumb transition">
-                        <ul class="category_grid category_style_section">
-                            <li>
-                                <figure>
-                                    <div class="image">
-                                        <a href="#">
-                                            <img src="~/image/png10.png"
-                                                 alt="Tri Cycle With Basket" title="Tri Cycle With Basket"
-                                                 class="img-responsive" />
-                                        </a>
-                                    </div>
-                                    <figcaption>
-                                        <h3><a href="#" class="text-decoration-none text-dark">Energéticos</a></h3>
-                                    </figcaption>
-                                </figure>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                }
             </div>
         </div>
     </div>
@@ -322,148 +106,150 @@
             <div class="tab-content products_home_tab">
                 <div class="tab-pane active" id="tab-featured">
                     <div class=" product-section product_mail-wrapper">
-                        <div class="row" >
-                                    @foreach (Tienda_Linea.Models.Producto product in ViewBag.products)
-                                    {
-                                        <div class="col-4 item product-layout fadeInUp">
-                                            <div class="product-thumb transition">
-                                                <div class="image">
-                                                    <!--image -->
-                                                    <a href="product-header.html">
-                                                        <img src="~/image/png1.png" alt="Bicycle Accessories"
-                                                             title="Bicycle Accessories" class="img-responsive" />
-                                                        <img src="~/image/png3.png" alt="Bicycle Accessories"
-                                                             title="Bicycle Accessories"
-                                                             class="img-responsive hover-image" />
+                        <div class="row">
+                            @foreach (Tienda_Linea.Models.Producto product in ViewBag.products)
+                            {
+                                <div class="col-4 item product-layout fadeInUp">
+                                    <div class="product-thumb transition">
+                                        <div class="image">
+                                            <!--image -->
+                                            <a href="product-header.html">
+                                                <img src="~/image/png1.png" alt="Bicycle Accessories"
+                                                     title="Bicycle Accessories" class="img-responsive" />
+                                                <img src="~/image/png3.png" alt="Bicycle Accessories"
+                                                     title="Bicycle Accessories"
+                                                     class="img-responsive hover-image" />
+                                            </a>
+                                            <!--hover buttons -->
+                                            <div class="hover-button button-group ">
+                                                <a href="product-header.html">
+                                                    <button type="button" class="addtocart" data-toggle="tooltip"
+                                                            data-placement="left" data-original-title="Add to Cart">
+                                                        <i class="fa fa-shopping-cart"></i>
+                                                    </button>
+                                                </a>
+                                                <div class="custom-button-group">
+                                                    <a class="quickviewopen" href="product.html"
+                                                       data-toggle="tooltip" data-placement="left"
+                                                       data-original-title="Quick View">
+                                                        <i class="fa fa-eye"></i>
                                                     </a>
-                                                    <!--hover buttons -->
-                                                    <div class="hover-button button-group ">
-                                                        <a href="product-header.html">
-                                                            <button type="button" class="addtocart" data-toggle="tooltip"
-                                                                    data-placement="left" data-original-title="Add to Cart">
-                                                                <i class="fa fa-shopping-cart"></i>
-                                                            </button>
-                                                        </a>
-                                                        <div class="custom-button-group">
-                                                            <a class="quickviewopen" href="product.html"
-                                                               data-toggle="tooltip" data-placement="left"
-                                                               data-original-title="Quick View">
-                                                                <i class="fa fa-eye"></i>
-                                                            </a>
-                                                        </div>
-                                                        <button type="button" title="wishlist" class="wishlist"
-                                                                data-toggle="tooltip" data-placement="left"
-                                                                data-original-title="Wishlist">
-                                                            <i class="fa fa-heart-o"></i>
-                                                        </button>
-                                                        <button type="button" title="Compare this Product" class="compare"
-                                                                data-toggle="tooltip" data-placement="left"
-                                                                data-original-title="Compare">
-                                                            <i class="fa fa-balance-scale"></i>
-                                                        </button>
-                                                    </div>
                                                 </div>
-                                                <!--hover buttons end-->
-                                                <!--products text matter -->
-                                                <div class="caption">
-                                                    <div class="rate-and-title">
-                                                        <h4>
-                                                            <a href="product-header.html">@Html.Label(product.Nombre)</a>
-                                                        </h4>
-                                                        <p class="d-flex price">@Html.Label("$" + product.Precio.ToString())</p>
-                                                    </div>
-                                                </div>
+                                                <button type="button" title="wishlist" class="wishlist"
+                                                        data-toggle="tooltip" data-placement="left"
+                                                        data-original-title="Wishlist">
+                                                    <i class="fa fa-heart-o"></i>
+                                                </button>
+                                                <button type="button" title="Compare this Product" class="compare"
+                                                        data-toggle="tooltip" data-placement="left"
+                                                        data-original-title="Compare">
+                                                    <i class="fa fa-balance-scale"></i>
+                                                </button>
                                             </div>
                                         </div>
-                                    }
+                                        <!--hover buttons end-->
+                                        <!--products text matter -->
+                                        <div class="caption">
+                                            <div class="rate-and-title">
+                                                <h4>
+                                                    <a href="product-header.html">@Html.Label(product.Nombre)</a>
+                                                </h4>
+                                                <p class="d-flex price">@Html.Label("$" + product.Precio.ToString())</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        <!-- bestsellet products  end -->
+                        <!-- special products start -->
+                        <div class="tab-pane" id="tab-special">
+                            <div class=" product-section product_mail-wrapper">
+                                <div id="special_product_filter" class="owl-carousel">
+                                </div>
                             </div>
-                <!-- bestsellet products  end -->
-                <!-- special products start -->
-                <div class="tab-pane" id="tab-special">
-                    <div class=" product-section product_mail-wrapper">
-                        <div id="special_product_filter" class="owl-carousel">
                         </div>
+                        <!-- special products end -->
                     </div>
-                </div>
-                <!-- special products end -->
-            </div>
-        </div>
-    </div>
-</div>
-
-<div>
-    <div class="Offer_banner_wrapper">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="banner_Offers">
-                    <h3>Ofertas especiales</h3>
-                    <h2><span>Just </span>Now!</h2>
-                    <p class="btn-wrapper"><a href="#" class="btn btn-primary">Comprar</a></p>
                 </div>
             </div>
         </div>
-    </div>
-</div>
 
-<!-- testinomials start-->
-<div id="testinomials">
-    <div class="testinomials text-center">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="comman_title text-center">
-                    <h3 class="wow fadeInUp">Opiniones de los clientes</h3>
+        <div>
+            <div class="Offer_banner_wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="banner_Offers">
+                            <h3>Ofertas especiales</h3>
+                            <h2><span>Just </span>Now!</h2>
+                            <p class="btn-wrapper"><a href="#" class="btn btn-primary">Comprar</a></p>
+                        </div>
+                    </div>
                 </div>
-                <div id="testimonial0" class="owl-carousel" style="opacity: 1;">
-                    <div class="col-sm-12">
-                        <div class="item custom_item">
-                            <h5 class="wow fadeInUp">
-                                <p>
-                                    It is a long established fact that a reader will be distracted by the readable
-                                    content of a page when looking at its layout.
-                                </p>
-                            </h5>
-                            <img src="~/image/adele@2x.jpg" class="img-circle" alt="Ashley Wick" />
-                            <p class="tauthor wow fadeInUp">Ashley Wick</p>
-                            <h4 class="wow fadeInUp"> - Web Developer</h4>
+            </div>
+        </div>
+
+        <!-- testinomials start-->
+        <div id="testinomials">
+            <div class="testinomials text-center">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="comman_title text-center">
+                            <h3 class="wow fadeInUp">Opiniones de los clientes</h3>
                         </div>
-                    </div>
-                    <div class="col-sm-12">
-                        <div class="item custom_item">
-                            <h5 class="wow fadeInUp">
-                                <p>
-                                    It is a long established fact that a reader will be distracted by the readable
-                                    content of a page when looking at its layout.
-                                </p>
-                            </h5>
-                            <img src="~/image/jimi@2x.jpg" class="img-circle" alt="Jone Doe" />
-                            <p class="tauthor wow fadeInUp">Jone Doe</p>
-                            <h4 class="wow fadeInUp"> - PSD Designer</h4>
-                        </div>
-                    </div>
-                    <div class="col-sm-12">
-                        <div class="item custom_item">
-                            <h5 class="wow fadeInUp">
-                                <p>
-                                    It is a long established fact that a reader will be distracted by the readable
-                                    content of a page when looking at its layout.
-                                </p>
-                            </h5>
-                            <img src="~/image/steve@2x.jpg" class="img-circle" alt="Kevin" />
-                            <p class="tauthor wow fadeInUp">Kevin</p>
-                            <h4 class="wow fadeInUp"> - Web Develpor</h4>
-                        </div>
-                    </div>
-                    <div class="col-sm-12">
-                        <div class="item custom_item">
-                            <h5 class="wow fadeInUp">
-                                <p>
-                                    It is a long established fact that a reader will be distracted by the readable
-                                    content of a page when looking at its layout.
-                                </p>
-                            </h5>
-                            <img src="~/image/jimi@2x.jpg" class="img-circle" alt="Jimi Bloggs" />
-                            <p class="tauthor wow fadeInUp">Jimi Bloggs</p>
-                            <h4 class="wow fadeInUp"> - web developer</h4>
+                        <div id="testimonial0" class="owl-carousel" style="opacity: 1;">
+                            <div class="col-sm-12">
+                                <div class="item custom_item">
+                                    <h5 class="wow fadeInUp">
+                                        <p>
+                                            It is a long established fact that a reader will be distracted by the readable
+                                            content of a page when looking at its layout.
+                                        </p>
+                                    </h5>
+                                    <img src="~/image/adele@2x.jpg" class="img-circle" alt="Ashley Wick" />
+                                    <p class="tauthor wow fadeInUp">Ashley Wick</p>
+                                    <h4 class="wow fadeInUp"> - Web Developer</h4>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="item custom_item">
+                                    <h5 class="wow fadeInUp">
+                                        <p>
+                                            It is a long established fact that a reader will be distracted by the readable
+                                            content of a page when looking at its layout.
+                                        </p>
+                                    </h5>
+                                    <img src="~/image/jimi@2x.jpg" class="img-circle" alt="Jone Doe" />
+                                    <p class="tauthor wow fadeInUp">Jone Doe</p>
+                                    <h4 class="wow fadeInUp"> - PSD Designer</h4>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="item custom_item">
+                                    <h5 class="wow fadeInUp">
+                                        <p>
+                                            It is a long established fact that a reader will be distracted by the readable
+                                            content of a page when looking at its layout.
+                                        </p>
+                                    </h5>
+                                    <img src="~/image/steve@2x.jpg" class="img-circle" alt="Kevin" />
+                                    <p class="tauthor wow fadeInUp">Kevin</p>
+                                    <h4 class="wow fadeInUp"> - Web Develpor</h4>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="item custom_item">
+                                    <h5 class="wow fadeInUp">
+                                        <p>
+                                            It is a long established fact that a reader will be distracted by the readable
+                                            content of a page when looking at its layout.
+                                        </p>
+                                    </h5>
+                                    <img src="~/image/jimi@2x.jpg" class="img-circle" alt="Jimi Bloggs" />
+                                    <p class="tauthor wow fadeInUp">Jimi Bloggs</p>
+                                    <h4 class="wow fadeInUp"> - web developer</h4>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

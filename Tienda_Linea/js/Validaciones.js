@@ -37,8 +37,6 @@ class FormValidator {
             } else {
                 this.inputsWithErrors.delete(inputField);
             }
-            console.log(pass)
-            console.log(error)
         }
 
         inputField.addEventListener("change", () => execute())
@@ -46,10 +44,7 @@ class FormValidator {
     }
 }
 
-const frmLogin = new FormValidator("#frmLogin")
-const frmRegister = new FormValidator("#frmRegister")
-
-function validationID(value, inputField) {
+function validationID(value) {
     const pattern =  /^[1-9]-\d{4}-\d{4}$/;
     if (!pattern.test(value)) {
         return {
@@ -62,12 +57,26 @@ function validationID(value, inputField) {
     };
 };
 
-function validationNombre(value, inputField) {
+function validationNombre(value) {
     let pattern = /^([a-zA-Z]+) ([a-zA-Z]+)$/;
     if (!pattern.test(value)) {
         return {
             pass: false,
             error: "Debe tener formato de nombre y apellido."
+        }
+    }
+
+    return {
+        pass: true
+    };
+};
+
+function validationCorreo(value) {
+    let pattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
+    if (!pattern.test(value)) {
+        return {
+            pass: false,
+            error: "Debe tener formato correo."
         }
     }
 
@@ -82,7 +91,7 @@ function validationNombre(value, inputField) {
 //2 numeros
 //3 mayusculas
 //Minimo 8 caracteres
-function validationStrongPassword(value, inputField) {
+function validationStrongPassword(value) {
     let pattern = /^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8,}$/;
     if (!pattern.test(value)) {
         return {
@@ -96,9 +105,8 @@ function validationStrongPassword(value, inputField) {
     };
 };
 
-function validationContraseñasIguales(value, inputField) {
+function validationContraseñasIguales(value) {
     const passw1 = document.querySelector("#rPassw").value;
-    console.log(passw1+" : "+value)
     if (value != passw1) {
         return {
             pass: false,
@@ -110,10 +118,3 @@ function validationContraseñasIguales(value, inputField) {
         pass: true
     };
 };
-
-frmLogin.registerValidation("identificacion", validationID)
-
-frmRegister.registerValidation("rIdentificacion", validationID)
-frmRegister.registerValidation("rName", validationNombre)
-frmRegister.registerValidation("rPassw", validationStrongPassword)
-frmRegister.registerValidation("rPassw2", validationContraseñasIguales)

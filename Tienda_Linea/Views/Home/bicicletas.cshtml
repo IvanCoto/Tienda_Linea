@@ -1,16 +1,12 @@
-﻿@{
-
-    ViewBag.PageTitle = "Page title will be displayed on the browser tab";
-
-}
+﻿@Html.AntiForgeryToken()
 
 <!---------catagory-banner-------->
 <div class="main_breadcrumb">
     <div class="container-fluid">
         <div class="row breadcrumb">
-                <h3 class="ms-5">
-                    @ViewBag.Category
-                </h3>
+            <h3 class="ms-5">
+                @ViewBag.Category
+            </h3>
         </div>
     </div>
 </div><!------catagry banner end------>
@@ -125,22 +121,22 @@
                             </div>
                         </div>
                     </div>
-                <div class="swiper-viewport mt-5">
-                    <div id="banner0" class="swiper-container swiper-container-horizontal swiper-container-fade">
-                        <div class="swiper-wrapper" style="transition-duration: 0ms;">
-                            <div class="swiper-slide swiper-slide-active" style="width: 278px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a href="#"><img src="~/image/dsdd-270x350.jpg" alt="HP Banner" class="img-responsive"></a></div>
-                            <div class="swiper-slide swiper-slide-next" style="width: 278px; opacity: 0; transform: translate3d(-278px, 0px, 0px); transition-duration: 0ms;"><a href="#"><img src="~/image/ssss-270x350.jpg" alt="HP Banner2" class="img-responsive"></a></div>
+                    <div class="swiper-viewport mt-5">
+                        <div id="banner0" class="swiper-container swiper-container-horizontal swiper-container-fade">
+                            <div class="swiper-wrapper" style="transition-duration: 0ms;">
+                                <div class="swiper-slide swiper-slide-active" style="width: 278px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a href="#"><img src="~/image/dsdd-270x350.jpg" alt="HP Banner" class="img-responsive"></a></div>
+                                <div class="swiper-slide swiper-slide-next" style="width: 278px; opacity: 0; transform: translate3d(-278px, 0px, 0px); transition-duration: 0ms;"><a href="#"><img src="~/image/ssss-270x350.jpg" alt="HP Banner2" class="img-responsive"></a></div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <script type="text/javascript">
+                    <script type="text/javascript">
 <!--
-                    $('#banner0').swiper({
-                        effect: 'fade',
-                        autoplay: 2500,
-                        autoplayDisableOnInteraction: false
-                    });
-                    --></script>
+                        $('#banner0').swiper({
+                            effect: 'fade',
+                            autoplay: 2500,
+                            autoplayDisableOnInteraction: false
+                        });
+                        --></script>
             </aside>
 
             <div id="content" class="col-sm-9">
@@ -148,7 +144,7 @@
                     @ViewBag.Category
                 </h3>
                 <div class="row row_category">
-                    <div class="col-sm-2 category_banner"> 
+                    <div class="col-sm-2 category_banner">
                         <div class="category_banner">
                             <a href="product.html">
                                 <img src="~/image/png13.png" alt="Racing Bicycle Alminium Break" title="Racing Bicycle Alminium Break" class="img-thumbnail banner-images">
@@ -218,64 +214,64 @@
                         fixedContentPos: true
                     });
 
-                    $(document).ready(function () {
-                        $('#featured_product_filter').owlCarousel({
-                            items: 5,
-                            itemsDesktop: [1199, 4],
-                            itemsDesktopSmall: [992, 3],
-                            itemsTablet: [768, 2],
-                            itemsMobile: [450, 1],
-                            autoPlay: 6000,
-                            pagination: false,
-                            navigation: true,
-                            navigationText: ['<i class="fa fa-angle-left fa-5x"></i>', '<i class="fa fa-angle-right fa-5x"></i>']
-                        });
+                $(document).ready(function () {
+                    $('#featured_product_filter').owlCarousel({
+                        items: 5,
+                        itemsDesktop: [1199, 4],
+                        itemsDesktopSmall: [992, 3],
+                        itemsTablet: [768, 2],
+                        itemsMobile: [450, 1],
+                        autoPlay: 6000,
+                        pagination: false,
+                        navigation: true,
+                        navigationText: ['<i class="fa fa-angle-left fa-5x"></i>', '<i class="fa fa-angle-right fa-5x"></i>']
                     });
+                });
 
 
-                    $(document).ready(function () {
-                        $('#latest_product_filter').owlCarousel({
-                            items: 5,
-                            itemsDesktop: [1199, 4],
-                            itemsDesktopSmall: [992, 3],
-                            itemsTablet: [768, 2],
-                            itemsMobile: [450, 1],
-                            autoPlay: 6000,
-                            pagination: false,
-                            navigation: true,
-                            navigationText: ['<i class="fa fa-angle-left fa-5x"></i>', '<i class="fa fa-angle-right fa-5x"></i>']
-                        });
+                $(document).ready(function () {
+                    $('#latest_product_filter').owlCarousel({
+                        items: 5,
+                        itemsDesktop: [1199, 4],
+                        itemsDesktopSmall: [992, 3],
+                        itemsTablet: [768, 2],
+                        itemsMobile: [450, 1],
+                        autoPlay: 6000,
+                        pagination: false,
+                        navigation: true,
+                        navigationText: ['<i class="fa fa-angle-left fa-5x"></i>', '<i class="fa fa-angle-right fa-5x"></i>']
                     });
+                });
 
 
-                    $(document).ready(function () {
-                        $('#bestseller_product_filter').owlCarousel({
-                            items: 5,
-                            itemsDesktop: [1199, 4],
-                            itemsDesktopSmall: [992, 3],
-                            itemsTablet: [768, 2],
-                            itemsMobile: [450, 1],
-                            autoPlay: 6000,
-                            pagination: false,
-                            navigation: true,
-                            navigationText: ['<i class="fa fa-angle-left fa-5x"></i>', '<i class="fa fa-angle-right fa-5x"></i>']
-                        });
+                $(document).ready(function () {
+                    $('#bestseller_product_filter').owlCarousel({
+                        items: 5,
+                        itemsDesktop: [1199, 4],
+                        itemsDesktopSmall: [992, 3],
+                        itemsTablet: [768, 2],
+                        itemsMobile: [450, 1],
+                        autoPlay: 6000,
+                        pagination: false,
+                        navigation: true,
+                        navigationText: ['<i class="fa fa-angle-left fa-5x"></i>', '<i class="fa fa-angle-right fa-5x"></i>']
                     });
+                });
 
 
-                    $(document).ready(function () {
-                        $('#special_product_filter').owlCarousel({
-                            items: 5,
-                            itemsDesktop: [1199, 4],
-                            itemsDesktopSmall: [992, 3],
-                            itemsTablet: [768, 2],
-                            itemsMobile: [450, 1],
-                            autoPlay: 6000,
-                            pagination: false,
-                            navigation: true,
-                            navigationText: ['<i class="fa fa-angle-left fa-5x"></i>', '<i class="fa fa-angle-right fa-5x"></i>']
-                        });
+                $(document).ready(function () {
+                    $('#special_product_filter').owlCarousel({
+                        items: 5,
+                        itemsDesktop: [1199, 4],
+                        itemsDesktopSmall: [992, 3],
+                        itemsTablet: [768, 2],
+                        itemsMobile: [450, 1],
+                        autoPlay: 6000,
+                        pagination: false,
+                        navigation: true,
+                        navigationText: ['<i class="fa fa-angle-left fa-5x"></i>', '<i class="fa fa-angle-right fa-5x"></i>']
                     });
+                });
                 </script>
             </div>
         </div>

@@ -2,63 +2,158 @@
     Layout = "~/Views/Shared/_AuthLayout.cshtml";
 }
 
+@model Tienda_Linea.Models.Usuario
+
+@Html.AntiForgeryToken()
+
 <h2 class="mb-5"> Tienda de Bicicletas </h2>
 <div class="container" id="container">
     <div class="form-container sign-in-container">
         @using (Html.BeginForm("Ingresar", "Auth", FormMethod.Post, new { id = "frmLogin" }))
         {
+            @Html.AntiForgeryToken()
             <h1>Ingresar</h1>
 
-            <span class="identificacion w-100">
-                <input type="text" class="form-control" placeholder="Identificacion" name="identificacion" id="identificacion" required />
+            <span class="correo w-100">
+                @Html.TextBoxFor(m => m.Correo, new
+                {
+                    @name = "correo",
+                    @id = "correo",
+                    @class = "form-control",
+                    @placeholder = "Correo",
+                    @type = "text"
+                })
                 <label class="input_error text-danger mb-3"></label>
             </span>
-
-            <input type="password" class="form-control" placeholder="Password" name="passw" id="passw" required />
-            <a href="#" class="text-info">¿Olvidaste tu contraseña?</a>
+            <span class="w-100">
+                @Html.PasswordFor(m => m.Contrasenna, new
+                {
+                    @name = "passw",
+                    @id = "passw",
+                    @class = "form-control",
+                    @placeholder = "Contraseña",
+                    @type = "password"
+                })
+            </span>
+            <a href="@Url.Action("RecuperarContraseña", "Auth")" class="text-info mx-1">¿Olvidaste tu contraseña?</a>
             <button type="submit">Ingresar</button>
         }
     </div>
-        <div class="form-container sign-up-container">
-            @using (Html.BeginForm("Registrar", "Auth", FormMethod.Post, new { id = "frmRegister" }))
-            {
-                <h1>Crear una cuenta</h1>
-                <span class="rName w-100">
-                    <input type="text" class="form-control" placeholder="Nombre" name="nombre" id="rName" required />
-                    <label class="input_error text-danger mb-3"></label>
-                </span>
+    <div class="form-container sign-up-container">
+        @using (Html.BeginForm("Registrar", "Auth", FormMethod.Post, new { id = "frmRegister" }))
+        {
+            @Html.AntiForgeryToken()
+            <h1>Crear una cuenta</h1>
+            <span class="rName w-100">
+                @Html.TextBoxFor(m => m.Nombre, new
+                {
+                    @name = "nombre",
+                    @id = "rName",
+                    @class = "form-control",
+                    @placeholder = "Nombre",
+                    @type = "text"
+                })
+                <label class="input_error text-danger mb-3"></label>
+            </span>
 
-                <span class="rIdentificacion w-100">
-                    <input type="text" class="form-control" placeholder="Identificacion" name="identificacion" id="rIdentificacion" required />
-                    <label class="input_error text-danger mb-3"></label>
-                </span>
+            <span class="rIdentificacion w-100">
+                @Html.TextBoxFor(m => m.Identificacion, new
+                {
+                    @name = "identificacion",
+                    @id = "rIdentificacion",
+                    @class = "form-control",
+                    @placeholder = "Identificacion",
+                    @type = "text"
+                })
+                <label class="input_error text-danger mb-3"></label>
+            </span>
 
-                <span class="rPassw w-100">
-                    <input type="password" class="form-control" placeholder="Contraseña" name="passw" id="rPassw" required />
-                    <label class="input_error text-danger mb-3"></label>
-                </span>
+            <span class="rCorreo w-100">
+                @Html.TextBoxFor(m => m.Correo, new
+                {
+                    @name = "correo",
+                    @id = "rCorreo",
+                    @class = "form-control",
+                    @placeholder = "Correo",
+                    @type = "text"
+                })
+                <label class="input_error text-danger mb-3"></label>
+            </span>
 
-                <span class="rPassw2 w-100">
-                    <input type="password" class="form-control" placeholder="Confirmar Contraseña" name="passw2" id="rPassw2" required />
-                    <label class="input_error text-danger mb-3"></label>
-                </span>
-                <button>Crear</button>
-            }
-        </div>
-            <div class="overlay-container">
-                <div class="overlay">
-                    <div class="overlay-panel overlay-left">
-                        <h1>¡Hola, de nuevo!</h1>
-                        <p>¿Si tienes una cuenta?</p>
-                        <button class="ghost" id="signIn">Ingresar</button>
-                    </div>
-                    <div class="overlay-panel overlay-right">
-                        <h1>¡Bienvenido!</h1>
-                        <p>¿Aun no tienes una cuenta?</p>
-                        <button class="ghost" id="signUp">Registrarse</button>
-                    </div>
-                </div>
+            <span class="rTelefono w-100">
+                @Html.TextBoxFor(m => m.Telefono, new
+                {
+                    @name = "telefono",
+                    @id = "rTelefono",
+                    @class = "form-control",
+                    @placeholder = "Telefono",
+                    @type = "text"
+                })
+                <label class="input_error text-danger mb-3"></label>
+            </span>
+
+            <span class="rPassw w-100">
+                @Html.TextBoxFor(m => m.Contrasenna, new
+                {
+                    @id = "rPassw",
+                    @class = "form-control",
+                    @placeholder = "Contraseña",
+                    @type = "password"
+                })
+                <label class="input_error text-danger mb-3"></label>
+            </span>
+
+            <span class="rPassw2 w-100">
+                <input id="rPassw2" class="form-control" placeholder="Contraseña" type="password">
+                <label class="input_error text-danger mb-3"></label>
+            </span>
+            <button>Crear</button>
+        }
+    </div>
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-left">
+                <h1>¡Hola, de nuevo!</h1>
+                <p>¿Si tienes una cuenta?</p>
+                <button class="ghost" id="signIn">Ingresar</button>
+            </div>
+            <div class="overlay-panel overlay-right">
+                <h1>¡Bienvenido!</h1>
+                <p>¿Aun no tienes una cuenta?</p>
+                <button class="ghost" id="signUp">Registrarse</button>
             </div>
         </div>
-<!--El jquery se envia aqui porque en este punto ya la pagina cargo jquery-->
+    </div>
+</div>
+
+<!--Codigo para cambiar entre el login y el registro-->
+<script>
+    const signUpButton = document.getElementById('signUp');
+    const signInButton = document.getElementById('signIn');
+    const container = document.getElementById('container');
+
+    signUpButton.addEventListener('click', () => {
+        container.classList.add("right-panel-active");
+    });
+
+    signInButton.addEventListener('click', () => {
+        container.classList.remove("right-panel-active");
+    });
+</script>
+
+<!--Codigo para crear validaciones-->
 <script src="~/js/Validaciones.js"></script>
+
+<!--Codigo para registrar las validaciones-->
+<script>
+    const frmLogin = new FormValidator("#frmLogin")
+    const frmRegister = new FormValidator("#frmRegister")
+
+    //El id del primer parametro y la clase del span que lo contiene debe tener el mismo nombre para que funcione
+    frmLogin.registerValidation("correo", validationCorreo)
+
+    frmRegister.registerValidation("rIdentificacion", validationID)
+    frmRegister.registerValidation("rName", validationNombre)
+    frmRegister.registerValidation("rPassw", validationStrongPassword)
+    frmRegister.registerValidation("rPassw2", validationContraseñasIguales)
+</script>
