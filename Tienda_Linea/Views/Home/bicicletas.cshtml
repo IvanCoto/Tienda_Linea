@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="row breadcrumb">
             <h3 class="ms-5">
-                @ViewBag.Category
+                @ViewBag.categoria
             </h3>
         </div>
     </div>
@@ -29,7 +29,7 @@
                     }
                 </style>
                 <div class="list-group categories_wrapper_home">
-                    <h4>Categories</h4>
+                    <h4>Filtros</h4>
                     <div class="accordion" id="accordion-racing">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingOne">
@@ -141,7 +141,7 @@
 
             <div id="content" class="col-sm-9">
                 <h3>
-                    @ViewBag.Category
+                    
                 </h3>
                 <div class="row row_category">
                     <div class="col-sm-2 category_banner">
@@ -151,16 +151,13 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-sm-10 card">
-                        <div class="card-body">
-                            <h4 class="card-title">Caracteristicas</h4>
-                            <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                        </div>
+                    <div class="col-sm-10 d-flex align-items-center">
+                            <h4 class="card-title">@ViewBag.categoria</h4>
                     </div>
                 </div>
 
                 <div class="row">
-                    @foreach (Tienda_Linea.Models.Producto product in ViewBag.products)
+                    @foreach (Tienda_Linea.Models.Producto product in ViewBag.productos)
                     {
                         <div class="col-4 item product-layout fadeInUp">
                             <div class="product-thumb transition">
@@ -176,18 +173,12 @@
                                     <!--hover buttons -->
                                     <div class="hover-button button-group ">
                                         <a href="product-header.html">
+                                            <!-- TODO: usar jquery para agregar al carrito -->
                                             <button type="button" class="addtocart" data-toggle="tooltip"
                                                     data-placement="left" data-original-title="Add to Cart">
                                                 <i class="fa fa-shopping-cart"></i>
                                             </button>
                                         </a>
-                                        <div class="custom-button-group">
-                                            <a class="quickviewopen" href="@Url.Action("Product", "Home", new { id = product.ID })"
-                                               data-toggle="tooltip" data-placement="left"
-                                               data-original-title="Quick View">
-                                                <i class="fa fa-eye"></i>
-                                            </a>
-                                        </div>
                                     </div>
                                 </div>
                                 <!--hover buttons end-->
@@ -195,9 +186,9 @@
                                 <div class="caption">
                                     <div class="rate-and-title">
                                         <h4>
-                                            <a href="product-header.html">@Html.Label(product.Nombre)</a>
+                                            <a href="product-header.html">@product.Nombre</a>
                                         </h4>
-                                        <p class="d-flex price">@Html.Label("$" + product.Precio.ToString())</p>
+                                        <p class="d-flex price">$@product.Precio</p>
                                     </div>
                                 </div>
                             </div>

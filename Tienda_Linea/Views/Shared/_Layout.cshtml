@@ -25,6 +25,7 @@
 </head>
 
 <body>
+    <input type="hidden" value="@Session["IdUsuario"]" id="IdUsuario"/>
     <!-- loader -->
     <div class="loader" id="window">
         <img src="image/preloader.gif" id="hourglass2" alt="hourglass" title="hourglass">
@@ -80,14 +81,17 @@
                                     <button type="button" data-toggle="dropdown" data-loading-text="Loading..."
                                             class="btn btn-inverse btn-block btn-lg ">
                                         <p class="cart_data_p">
-                                            <i class="fa fa-shopping-cart faicons"></i> Carrito <span class="cart_qut">0</span>
+                                            <i class="fa fa-shopping-cart faicons"></i> Carrito <span class="cart_qut" id="art_cart"></span>
                                         </p>
                                     </button>
-                                    <ul class="dropdown-menu pull-right cheekout_weap">
-                                        <li>
-                                            <p class="text-center">Your shopping cart is empty!</p>
-                                        </li>
-                                    </ul>
+                                    <div class="dropdown-menu pull-right cheekout_weap">
+                                        <div class="d-flex justify-content-center align-items-center mt-3">
+                                            <i class="fa fa-shopping-cart faicons"></i>
+                                            <p class="fs-2" style="color: #33C5C1">Carrito</p>
+                                        </div>
+                                        <hr />
+                                        <ul class="m-3" id="cart_list"></ul>
+                                    </div>
                                 </div>
                             </div>
                             @if (Session["NombreUsuario"] != null)
@@ -425,8 +429,15 @@
     </script>
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-
-
+    <script src="~/js/cargarCarrito.js"></script>
+    <script>
+        let headers = {
+            "Content-Type": "application/json",
+            "Access-Control-Origin": "*",
+            "Origin": "https://localhost:44306"
+        }
+        $(document).ready(cargarCarrito());
+    </script>
 </body>
 
 </html>

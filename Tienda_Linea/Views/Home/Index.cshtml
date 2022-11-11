@@ -13,14 +13,16 @@
                             <li class="nav-item col-2">
                                 @Html.ActionLink("Inicio", "Index", "Home", new { @class = "nav-link fs-3" })
                             </li>
-                            @foreach (Tienda_Linea.Models.Categoria categoria in ViewBag.categories)
+
+                            @foreach (var categoria in ViewBag.categorias)
                             {
                                 <li class="dropdown nav-item col-2">
-                                    <a href="@Url.Action("Bicicletas", "Home")" class="nav-link fs-3">
+                                    <a href="@Url.Action("Bicicletas", "Home", new { id = categoria.IdCategoria })" class="nav-link fs-3">
                                         @categoria.Descripcion
                                     </a>
                                 </li>
                             }
+
                         </ul>
                     </div>
                 </div>
@@ -66,7 +68,7 @@
         </div>
         <div class="product_mail-wrapper row product-section">
             <div id="category_block" class="owl-carousel">
-                @foreach (Tienda_Linea.Models.Categoria categoria in ViewBag.categories)
+                @foreach (Tienda_Linea.Models.Categoria categoria in ViewBag.categorias)
                 {
                     <div class="product-layout col-lg-12 col-md-4 col-sm-6 col-xs-12 wow fadeInUp">
                         <div class="category-thumb transition">
@@ -81,7 +83,7 @@
                                         </div>
                                         <figcaption>
                                             <h3>
-                                                @Html.ActionLink(categoria.Nombre, "Bicicletas", "Home", new { category = categoria.Nombre }, new { @class = "text-decoration-none" })
+                                                @Html.ActionLink(categoria.Descripcion, "Bicicletas", "Home", new { id = categoria.IdCategoria }, new { @class = "text-decoration-none" })
                                             </h3>
                                         </figcaption>
                                     </figure>
@@ -107,7 +109,7 @@
                 <div class="tab-pane active" id="tab-featured">
                     <div class=" product-section product_mail-wrapper">
                         <div class="row">
-                            @foreach (Tienda_Linea.Models.Producto product in ViewBag.products)
+                            @foreach (var product in ViewBag.productos)
                             {
                                 <div class="col-4 item product-layout fadeInUp">
                                     <div class="product-thumb transition">
@@ -122,28 +124,10 @@
                                             </a>
                                             <!--hover buttons -->
                                             <div class="hover-button button-group ">
-                                                <a href="product-header.html">
-                                                    <button type="button" class="addtocart" data-toggle="tooltip"
-                                                            data-placement="left" data-original-title="Add to Cart">
-                                                        <i class="fa fa-shopping-cart"></i>
-                                                    </button>
-                                                </a>
-                                                <div class="custom-button-group">
-                                                    <a class="quickviewopen" href="product.html"
-                                                       data-toggle="tooltip" data-placement="left"
-                                                       data-original-title="Quick View">
-                                                        <i class="fa fa-eye"></i>
-                                                    </a>
-                                                </div>
-                                                <button type="button" title="wishlist" class="wishlist"
-                                                        data-toggle="tooltip" data-placement="left"
-                                                        data-original-title="Wishlist">
-                                                    <i class="fa fa-heart-o"></i>
-                                                </button>
-                                                <button type="button" title="Compare this Product" class="compare"
-                                                        data-toggle="tooltip" data-placement="left"
-                                                        data-original-title="Compare">
-                                                    <i class="fa fa-balance-scale"></i>
+                                                <button type="button" class="addtocart" data-toggle="tooltip"
+                                                        data-placement="left" data-original-title="Add to Cart"
+                                                        id="@product.IdProducto">
+                                                    <i class="fa fa-shopping-cart"></i>
                                                 </button>
                                             </div>
                                         </div>
@@ -152,14 +136,15 @@
                                         <div class="caption">
                                             <div class="rate-and-title">
                                                 <h4>
-                                                    <a href="product-header.html">@Html.Label(product.Nombre)</a>
+                                                    <a href="product-header.html">@product.Nombre</a>
                                                 </h4>
-                                                <p class="d-flex price">@Html.Label("$" + product.Precio.ToString())</p>
+                                                <p class="d-flex price">$@product.Precio.ToString()</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             }
+
                         </div>
                         <!-- bestsellet products  end -->
                         <!-- special products start -->
@@ -257,3 +242,36 @@
         </div>
     </div>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="~/js/cargarCarrito.js"></script>
+<script>
+    $(document).on("click", ".addtocart", function () {
+        var productoId = $(this).attr('id');
+        url = "https://localhost:44306/api/Carrito/AgregarACarrito"
+
+        let headers = {
+            "Content-Type": "application/json",
+            "Access-Control-Origin": "*",
+            "Origin": "https://localhost:44306"
+        }
+
+        const data = {
+            IdUsuario: "17",
+            IdProducto: productoId.toString(),
+            Cantidad: "1"
+        }
+
+        fetch("https://localhost:44306/api/Carrito/AgregarACarrito", {
+            method: "POST",
+            headers: headers,
+            body: JSON.stringify(data)
+        })
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            cargarCarrito()
+        });
+    });
+</script>

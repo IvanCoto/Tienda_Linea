@@ -13,7 +13,7 @@ namespace Tienda_Linea.Models
         public string Contrasenna { get; set; }
         public string Token { get; set; }
         //Se utiliza unicamente para recuperar la contraseña
-        public string TokenRecovery { get; set; }
+        public string Recovery_Token { get; set; }
     }
 
     public class DireccionObj

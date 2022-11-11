@@ -1,0 +1,43 @@
+﻿@{
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+}
+
+@model Tienda_Linea.Models.Usuario
+
+<h2 class="mb-5"> Tienda de Bicicletas </h2>
+<div class="container" id="container">
+    <div class="form-container sign-in-container w-100">
+        @using (Html.BeginForm("Recuperar", "Auth", FormMethod.Post, new { id = "frmRecuperar" }))
+        {
+            @Html.HiddenFor(d => d.Recovery_Token)
+            <h1 style="color: #FF4B2B ">Escribe tu nueva contraseña</h1>
+
+            <span class="rPassw w-100">
+                @Html.PasswordFor(m => m.Contrasenna, new
+                {
+                    @id = "rPassw",
+                    @class = "form-control",
+                    @placeholder = "Contraseña",
+                    @type = "password"
+                })
+                <label class="input_error text-danger mb-3"></label>
+            </span>
+            <span class="rPassw2 w-100">
+                <input id="rPassw2" class="form-control" placeholder="Vuelve a escribir tu contraseña" type="password">
+                <label class="input_error text-danger mb-3"></label>
+            </span>
+            <button type="submit">Recuperar</button>
+        }
+    </div>
+</div>
+<!--Codigo para registrar las validaciones-->
+<script src="~/js/Validaciones.js"></script>
+
+<!--Codigo para registrar las validaciones-->
+<script>
+    const frmLogin = new FormValidator("#frmRecuperar")
+
+    //El id del primer parametro y la clase del span que lo contiene debe tener el mismo nombre para que funcione
+    frmLogin.registerValidation("rPassw", validationStrongPassword)
+    frmLogin.registerValidation("rPassw2", validationContraseñasIguales)
+</script>

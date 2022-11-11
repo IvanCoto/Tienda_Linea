@@ -159,10 +159,13 @@
     </Compile>
     <Compile Include="Models\Modelos\CategoriaModel.cs" />
     <Compile Include="Models\Modelos\FiltroSesion.cs" />
+    <Compile Include="Models\Modelos\ProductoModel.cs" />
     <Compile Include="Models\Modelos\UsuarioModel.cs" />
+    <Compile Include="Models\Objetos\Carrito.cs" />
     <Compile Include="Models\Objetos\Categoria.cs" />
     <Compile Include="Models\Objetos\Marca.cs" />
     <Compile Include="Models\Objetos\Producto.cs" />
+    <Compile Include="Models\Objetos\Recovery.cs" />
     <Compile Include="Models\Objetos\Respuesta.cs" />
     <Compile Include="Models\Objetos\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -275,6 +278,7 @@
     <Content Include="image\steve%402x.jpg" />
     <Content Include="js\bootstrap-datetimepicker.min.js" />
     <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\cargarCarrito.js" />
     <Content Include="js\carousel.js" />
     <Content Include="js\common.js" />
     <Content Include="js\jquery-2.1.1.min.js" />
@@ -324,6 +328,7 @@
     <Content Include="Views\Home\product.cshtml" />
     <Content Include="Views\Shared\_ProductLayout.cshtml" />
     <Content Include="Views\Auth\RecuperarContraseña.cshtml" />
+    <Content Include="Views\Auth\Recuperar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
