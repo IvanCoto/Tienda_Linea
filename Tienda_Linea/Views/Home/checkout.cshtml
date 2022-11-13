@@ -1,0 +1,72 @@
+﻿@Html.AntiForgeryToken()
+<!---------catagory-banner-------->
+<div class="main_breadcrumb">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="breadcrumb">
+                <h3>Checkout</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<link href="~/css/base.css" rel="stylesheet" />
+<link href="~/css/style.css" rel="stylesheet" />
+<div class="mt-5">
+    <!--CART START-->
+    <div class="extrow full-cart format_load">
+        <div class="extsm-12">
+            <div class="content-shopping-cart">
+                <div class="extpanel extpanel-default">
+                    <div class="extpanel-heading">
+                        <h4 class="extpanel-title">
+                            <i class="fa fa-shopping-cart"></i> Shopping Cart
+                        </h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="shopping-cart-content ext-carts min-hght">
+                            <div>
+                                @foreach (Tienda_Linea.Models.Objetos.Carrito carrito in ViewBag.productos)
+                                {
+                                    <div class="card mb-2">
+                                        <div class="card-body">
+                                            Producto
+                                        </div>
+                                    </div>
+                                }
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--CART END-->
+    <div class="extrow">
+        <!-- Shipping -->
+        <div class="extsm-6">
+            <div class="full-payment-method format_load">
+                <div class="content-delivery-method">
+                    <div class="extpanel extpanel-default">
+                        <div class="extpanel-heading">
+                            <h4 class="extpanel-title"><i class="fa fa-send"></i> Shipping Methods</h4>
+                        </div>
+                        <div class="miniheightclass extpanel-body delivery-method-content ext-delivery-method"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Payment Methods -->
+        <div class="extsm-6">
+            <div class="full-payment-method format_load">
+                <div class="content-payment-method">
+                    <div class="extpanel extpanel-default">
+                        <div class="extpanel-heading">
+                            <h4 class="extpanel-title"><i class="fa fa-credit-card"></i> Payment Methods</h4>
+                        </div>
+                        <div class="miniheightclass extpanel-body payment-method-content ext-payment-method"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -16,7 +16,7 @@ namespace Tienda_Linea.Controllers
     public class HomeController : Controller
     {
         ProductoModel modelProducto = new ProductoModel();
-
+        CarritoModel modelCarrito = new CarritoModel();
         CategoriaModel modelCategoria = new CategoriaModel();
         [FiltroSesion]
         [HttpGet]
@@ -53,11 +53,13 @@ namespace Tienda_Linea.Controllers
 
         [FiltroSesion]
         [HttpGet]
-        public ActionResult AgregarCarrito(Carrito carrito)
+        public ActionResult Checkout()
         {
             try
             {
-                return RedirectToAction("Bicicletas","Home");
+                int idUsuario = (int)Session["IdUsuario"];
+                ViewBag.productos = modelCarrito.Get_Productos_Carrito(idUsuario).respuestaLista;
+                return View();
             }catch (Exception ex)
             {
                 //Cambiar por guardar error

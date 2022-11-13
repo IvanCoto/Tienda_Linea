@@ -160,6 +160,7 @@
     <Compile Include="Models\Modelos\CategoriaModel.cs" />
     <Compile Include="Models\Modelos\FiltroSesion.cs" />
     <Compile Include="Models\Modelos\ProductoModel.cs" />
+    <Compile Include="Models\Modelos\CarritoModel.cs" />
     <Compile Include="Models\Modelos\UsuarioModel.cs" />
     <Compile Include="Models\Objetos\Carrito.cs" />
     <Compile Include="Models\Objetos\Categoria.cs" />
@@ -329,6 +330,7 @@
     <Content Include="Views\Shared\_ProductLayout.cshtml" />
     <Content Include="Views\Auth\RecuperarContraseña.cshtml" />
     <Content Include="Views\Auth\Recuperar.cshtml" />
+    <Content Include="Views\Home\checkout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
