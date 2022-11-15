@@ -39,6 +39,7 @@ namespace Tienda_Linea.Controllers
                     Session["CodigoSeguridad"] = resultado.respuestaObj.Token;
                     Session["NombreUsuario"] = resultado.respuestaObj.Nombre;
                     Session["TipoUsuario"] = resultado.respuestaObj.TipoUsuario;
+
                     return RedirectToAction("Index", "Home");
                 }
                 else

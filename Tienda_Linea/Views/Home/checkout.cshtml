@@ -22,6 +22,8 @@
                             <i class="fa fa-shopping-cart"></i> Shopping Cart
                         </h4>
                     </div>
+                    @if (ViewBag.productos != null)
+                    {
                     <div class="panel-body">
                         <div class="shopping-cart-content ext-carts min-hght">
                             <div>
@@ -51,6 +53,13 @@
                             </div>
                         </div>
                     </div>
+                    }
+                    @if (ViewBag.productos == null)
+                    {
+                        <div class="my-4">
+                            <p class="text-center fs-3">¡Aún no hay productos en el carrito!</p>
+                        </div>
+                    }
                 </div>
             </div>
         </div>

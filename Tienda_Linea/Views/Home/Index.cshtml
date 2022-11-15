@@ -13,16 +13,17 @@
                             <li class="nav-item col-2">
                                 @Html.ActionLink("Inicio", "Index", "Home", new { @class = "nav-link fs-3" })
                             </li>
-
-                            @foreach (var categoria in ViewBag.categorias)
+                            @if (ViewBag.categorias != null)
                             {
-                                <li class="dropdown nav-item col-2">
-                                    <a href="@Url.Action("Bicicletas", "Home", new { id = categoria.IdCategoria })" class="nav-link fs-3">
-                                        @categoria.Descripcion
-                                    </a>
-                                </li>
+                                foreach (var categoria in ViewBag.categorias)
+                                {
+                                    <li class="dropdown nav-item col-2">
+                                        <a href="@Url.Action("Bicicletas", "Home", new { id = categoria.IdCategoria })" class="nav-link fs-3">
+                                            @categoria.Descripcion
+                                        </a>
+                                    </li>
+                                }
                             }
-
                         </ul>
                     </div>
                 </div>
@@ -61,41 +62,51 @@
     </div>
 </div>
 <!-- shop by category -->
-<div id="category" class="shop_by_category">
-    <div class="container-fluid">
-        <div class="comman_title text-center">
-            <h2 class="wow fadeInUp">Comprar por categorias</h2>
-        </div>
-        <div class="product_mail-wrapper row product-section">
-            <div id="category_block" class="owl-carousel">
-                @foreach (Tienda_Linea.Models.Categoria categoria in ViewBag.categorias)
-                {
-                    <div class="product-layout col-lg-12 col-md-4 col-sm-6 col-xs-12 wow fadeInUp">
-                        <div class="category-thumb transition">
-                            <ul class="category_grid category_style_section">
-                                <li>
-                                    <figure>
-                                        <div class="image">
-                                            <a href="#">
-                                                <img src="~/image/png10.png" alt="Racing Bicycles"
-                                                     title="Racing Bicycles" class="img-responsive" />
-                                            </a>
-                                        </div>
-                                        <figcaption>
-                                            <h3>
-                                                @Html.ActionLink(categoria.Descripcion, "Bicicletas", "Home", new { id = categoria.IdCategoria }, new { @class = "text-decoration-none" })
-                                            </h3>
-                                        </figcaption>
-                                    </figure>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                }
+    <div id="category" class="shop_by_category">
+        <div class="container-fluid">
+            <div class="comman_title text-center">
+                <h2 class="wow fadeInUp">Comprar por categorías</h2>
             </div>
+        @if (ViewBag.categorias != null)
+        {
+            <div class="product_mail-wrapper row product-section">
+                <div id="category_block" class="owl-carousel">
+                    @foreach (Tienda_Linea.Models.Categoria categoria in ViewBag.categorias)
+                    {
+                        <div class="product-layout col-lg-12 col-md-4 col-sm-6 col-xs-12 wow fadeInUp">
+                            <div class="category-thumb transition">
+                                <ul class="category_grid category_style_section">
+                                    <li>
+                                        <figure>
+                                            <div class="image">
+                                                <a href="#">
+                                                    <img src="~/image/png10.png" alt="Racing Bicycles"
+                                                         title="Racing Bicycles" class="img-responsive" />
+                                                </a>
+                                            </div>
+                                            <figcaption>
+                                                <h3>
+                                                    @Html.ActionLink(categoria.Descripcion, "Bicicletas", "Home", new { id = categoria.IdCategoria }, new { @class = "text-decoration-none" })
+                                                </h3>
+                                            </figcaption>
+                                        </figure>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
         </div>
     </div>
-</div>
+
+@if (ViewBag.categorias == null)
+{
+    <div class="my-4">
+        <p class="text-center fs-3">¡Aún no hay categorías!</p>
+    </div>
+}
 <!-- shop by category end-->
 <!-----New product-------->
 <div class="product_wrapper filtertab_back">
@@ -104,61 +115,69 @@
             <div class="comman_title wow bounceInLeft">
                 <h2>Nuevos productos</h2>
             </div>
-            <!-- featured products -->
-            <div class="tab-content products_home_tab">
-                <div class="tab-pane active" id="tab-featured">
-                    <div class=" product-section product_mail-wrapper">
-                        <div class="row">
-                            @foreach (var product in ViewBag.productos)
-                            {
-                                <div class="col-4 item product-layout fadeInUp">
-                                    <div class="product-thumb transition">
-                                        <div class="image">
-                                            <!--image -->
-                                            <a href="product-header.html">
-                                                <img src="~/image/png1.png" alt="Bicycle Accessories"
-                                                     title="Bicycle Accessories" class="img-responsive" />
-                                                <img src="~/image/png3.png" alt="Bicycle Accessories"
-                                                     title="Bicycle Accessories"
-                                                     class="img-responsive hover-image" />
-                                            </a>
-                                            <!--hover buttons -->
-                                            <div class="hover-button button-group ">
-                                                <button type="button" class="addtocart" data-toggle="tooltip"
-                                                        data-placement="left" data-original-title="Add to Cart"
-                                                        id="@product.IdProducto"
-                                                        onclick="addCart(@product.IdProducto)">
-                                                    <i class="fa fa-shopping-cart"></i>
-                                                </button>
+            @if (ViewBag.productos != null)
+            {
+                <!-- featured products -->
+                <div class="tab-content products_home_tab">
+                    <div class="tab-pane active" id="tab-featured">
+                        <div class=" product-section product_mail-wrapper">
+                            <div class="row">
+                                @foreach (var product in ViewBag.productos)
+                                {
+                                    <div class="col-4 item product-layout fadeInUp">
+                                        <div class="product-thumb transition">
+                                            <div class="image">
+                                                <!--image -->
+                                                <a href="product-header.html">
+                                                    <img src="~/image/png1.png" alt="Bicycle Accessories"
+                                                         title="Bicycle Accessories" class="img-responsive" />
+                                                    <img src="~/image/png3.png" alt="Bicycle Accessories"
+                                                         title="Bicycle Accessories"
+                                                         class="img-responsive hover-image" />
+                                                </a>
+                                                <!--hover buttons -->
+                                                <div class="hover-button button-group ">
+                                                    <button type="button" class="addtocart" data-toggle="tooltip"
+                                                            data-placement="left" data-original-title="Add to Cart"
+                                                            id="@product.IdProducto"
+                                                            onclick="addCart(@product.IdProducto)">
+                                                        <i class="fa fa-shopping-cart"></i>
+                                                    </button>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <!--hover buttons end-->
-                                        <!--products text matter -->
-                                        <div class="caption">
-                                            <div class="rate-and-title">
-                                                <h4>
-                                                    <a href="product-header.html">@product.Nombre</a>
-                                                </h4>
-                                                <p class="d-flex price">$@product.Precio.ToString()</p>
+                                            <!--hover buttons end-->
+                                            <!--products text matter -->
+                                            <div class="caption">
+                                                <div class="rate-and-title">
+                                                    <h4>
+                                                        <a href="product-header.html">@product.Nombre</a>
+                                                    </h4>
+                                                    <p class="d-flex price">$@product.Precio.ToString()</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            }
-
-                        </div>
-                        <!-- bestsellet products  end -->
-                        <!-- special products start -->
-                        <div class="tab-pane" id="tab-special">
-                            <div class=" product-section product_mail-wrapper">
-                                <div id="special_product_filter" class="owl-carousel">
+                                }
+                            </div>
+                            <!-- bestsellet products  end -->
+                            <!-- special products start -->
+                            <div class="tab-pane" id="tab-special">
+                                <div class=" product-section product_mail-wrapper">
+                                    <div id="special_product_filter" class="owl-carousel">
+                                    </div>
                                 </div>
                             </div>
+                            <!-- special products end -->
                         </div>
-                        <!-- special products end -->
                     </div>
                 </div>
-            </div>
+            }
+            @if (ViewBag.productos == null)
+            {
+                <div class="my-4">
+                    <p class="text-center fs-3">¡Aún no hay productos!</p>
+                </div>
+            }
         </div>
 
         <div>
@@ -168,7 +187,6 @@
                         <div class="banner_Offers">
                             <h3>Ofertas especiales</h3>
                             <h2><span>Just </span>Now!</h2>
-                            <p class="btn-wrapper"><a href="#" class="btn btn-primary">Comprar</a></p>
                         </div>
                     </div>
                 </div>
@@ -268,11 +286,11 @@
             headers: headers,
             body: JSON.stringify(data)
         })
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-            cargarCarrito()
-        });
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                cargarCarrito()
+            });
     }
 </script>
