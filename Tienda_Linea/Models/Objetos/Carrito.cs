@@ -9,6 +9,8 @@ namespace Tienda_Linea.Models.Objetos
     {
         public int IdUsuario { get; set; }
         public int IdProducto { get; set; }
+        public string NombreProducto { get; set; }
+        public decimal PrecioProducto { get; set; }
         public int IdCarrito { get; set; }
         public int Cantidad { get; set; }
     }

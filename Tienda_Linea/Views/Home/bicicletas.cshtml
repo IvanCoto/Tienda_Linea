@@ -129,14 +129,6 @@
                             </div>
                         </div>
                     </div>
-                    <script type="text/javascript">
-<!--
-                        $('#banner0').swiper({
-                            effect: 'fade',
-                            autoplay: 2500,
-                            autoplayDisableOnInteraction: false
-                        });
-                        --></script>
             </aside>
 
             <div id="content" class="col-sm-9">
@@ -172,13 +164,12 @@
                                     </a>
                                     <!--hover buttons -->
                                     <div class="hover-button button-group ">
-                                        <a href="product-header.html">
-                                            <!-- TODO: usar jquery para agregar al carrito -->
-                                            <button type="button" class="addtocart" data-toggle="tooltip"
-                                                    data-placement="left" data-original-title="Add to Cart">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </button>
-                                        </a>
+                                        <!-- TODO: usar jquery para agregar al carrito -->
+                                        <button type="button" class="addtocart" data-toggle="tooltip"
+                                                data-placement="left" data-original-title="Add to Cart"
+                                                onclick="addCart(@product.IdProducto)">
+                                            <i class="fa fa-shopping-cart"></i>
+                                        </button>
                                     </div>
                                 </div>
                                 <!--hover buttons end-->
@@ -195,76 +186,37 @@
                         </div>
                     }
                 </div>
-                <script>
-                    $('.quickviewopen').magnificPopup({
-                        disableOn: 700,
-                        type: 'iframe',
-                        mainClass: 'mfp-fade',
-                        removalDelay: 160,
-                        preloader: true,
-                        fixedContentPos: true
-                    });
-
-                $(document).ready(function () {
-                    $('#featured_product_filter').owlCarousel({
-                        items: 5,
-                        itemsDesktop: [1199, 4],
-                        itemsDesktopSmall: [992, 3],
-                        itemsTablet: [768, 2],
-                        itemsMobile: [450, 1],
-                        autoPlay: 6000,
-                        pagination: false,
-                        navigation: true,
-                        navigationText: ['<i class="fa fa-angle-left fa-5x"></i>', '<i class="fa fa-angle-right fa-5x"></i>']
-                    });
-                });
-
-
-                $(document).ready(function () {
-                    $('#latest_product_filter').owlCarousel({
-                        items: 5,
-                        itemsDesktop: [1199, 4],
-                        itemsDesktopSmall: [992, 3],
-                        itemsTablet: [768, 2],
-                        itemsMobile: [450, 1],
-                        autoPlay: 6000,
-                        pagination: false,
-                        navigation: true,
-                        navigationText: ['<i class="fa fa-angle-left fa-5x"></i>', '<i class="fa fa-angle-right fa-5x"></i>']
-                    });
-                });
-
-
-                $(document).ready(function () {
-                    $('#bestseller_product_filter').owlCarousel({
-                        items: 5,
-                        itemsDesktop: [1199, 4],
-                        itemsDesktopSmall: [992, 3],
-                        itemsTablet: [768, 2],
-                        itemsMobile: [450, 1],
-                        autoPlay: 6000,
-                        pagination: false,
-                        navigation: true,
-                        navigationText: ['<i class="fa fa-angle-left fa-5x"></i>', '<i class="fa fa-angle-right fa-5x"></i>']
-                    });
-                });
-
-
-                $(document).ready(function () {
-                    $('#special_product_filter').owlCarousel({
-                        items: 5,
-                        itemsDesktop: [1199, 4],
-                        itemsDesktopSmall: [992, 3],
-                        itemsTablet: [768, 2],
-                        itemsMobile: [450, 1],
-                        autoPlay: 6000,
-                        pagination: false,
-                        navigation: true,
-                        navigationText: ['<i class="fa fa-angle-left fa-5x"></i>', '<i class="fa fa-angle-right fa-5x"></i>']
-                    });
-                });
-                </script>
             </div>
         </div>
     </div>
 </div>
+<script>
+    function addCart(id) {
+        let idUsuario = document.getElementById("IdUsuario").value;
+        //let codigoSeguridad = document.getElementById("CodigoSeguridad").value;
+        let productoId = id;
+        url = "https://localhost:44306/api/Carrito/AgregarACarrito"
+
+        let headers = {
+            "Content-Type": "application/json",
+            "Access-Control-Origin": "*"
+        }
+
+        const data = {
+            IdUsuario: idUsuario,
+            IdProducto: productoId
+        }
+
+        fetch(url, {
+            method: "POST",
+            headers: headers,
+            body: JSON.stringify(data)
+        })
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                cargarCarrito()
+            });
+    }
+</script>

@@ -25,15 +25,30 @@
                     <div class="panel-body">
                         <div class="shopping-cart-content ext-carts min-hght">
                             <div>
-                                @foreach (Tienda_Linea.Models.Objetos.Carrito carrito in ViewBag.productos)
-                                {
-                                    <div class="card mb-2">
-                                        <div class="card-body">
-                                            Producto
-                                        </div>
-                                    </div>
-                                }
-                                </div>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Producto</th>
+                                            <th scope="col">Precio</th>
+                                            <th scope="col">Cantidad</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="cart-check-list">
+                                        @foreach (Tienda_Linea.Models.Objetos.Carrito carrito in ViewBag.productos)
+                                        {
+                                            <tr>
+                                                <td>@carrito.NombreProducto</td>
+                                                <td>@carrito.PrecioProducto</td>
+                                                <td>@carrito.Cantidad</td>
+                                                <td>
+                                                    <button class="btn btn-primary" onclick="aumentarCarritoTabla(@carrito.IdProducto)">+</button>
+                                                    <button class="btn btn-danger" onclick="disminuirCarritoTabla(@carrito.IdProducto)">-</button>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -70,3 +85,61 @@
         </div>
     </div>
 </div>
+<script>
+    function cargarTabla() {
+        let idUsuario = document.getElementById("IdUsuario").value;
+        fetch('https://localhost:44306/api/Carrito/GetCarrito/?id=' + idUsuario, {
+            method: "GET",
+            headers: headers,
+        })
+        .then((response) => response.json())
+        .then(function (response) {
+            let product = ""
+            if (response.respuestaLista != null) {
+                response.respuestaLista.forEach(element => {
+                    product += "<tr>"+
+                                    "<td>"+element.NombreProducto+"</td>"+
+                                    "<td>"+element.PrecioProducto+"</td>"+
+                                    "<td>"+element.Cantidad+"</td>"+
+                                    "<td>"+
+                                        "<button class='btn btn-primary' onclick='aumentarCarritoTabla("+element.IdProducto+")'>+</button>"+
+                                        "<button class='btn btn-danger' onclick='disminuirCarritoTabla("+element.IdProducto+")'>-</button>"+
+                                    "</td>"+
+                                "</tr>"
+                    document.getElementById("cart-check-list").innerHTML = product;
+                })
+            }
+            else {
+                product = "<li><p class='text-center'>¡El carrito esta vacio!</p></li>"
+                document.getElementById("cart_list").innerHTML = product;
+            }
+        })
+    }
+    function aumentarCarritoTabla(idProducto) {
+        idUsuario = document.getElementById("IdUsuario").value;
+        fetch('https://localhost:44306/api/Carrito/AddCart', {
+            method: "POST",
+            headers: headers,
+            body: JSON.stringify({ IdUsuario: idUsuario, IdProducto: idProducto })
+        })
+            .then((response) => response.json())
+            .then((response) => {
+                cargarCarrito()
+                cargarTabla()
+            })
+    }
+
+    function disminuirCarritoTabla(idProducto) {
+        idUsuario = document.getElementById("IdUsuario").value;
+        fetch('https://localhost:44306/api/Carrito/RestCart', {
+            method: "POST",
+            headers: headers,
+            body: JSON.stringify({ IdUsuario: idUsuario, IdProducto: idProducto })
+        })
+        .then((response) => response.json())
+        .then((response) => {
+            cargarCarrito()
+            cargarTabla()
+        })
+    }
+</script>

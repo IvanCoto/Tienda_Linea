@@ -126,7 +126,8 @@
                                             <div class="hover-button button-group ">
                                                 <button type="button" class="addtocart" data-toggle="tooltip"
                                                         data-placement="left" data-original-title="Add to Cart"
-                                                        id="@product.IdProducto">
+                                                        id="@product.IdProducto"
+                                                        onclick="addCart(@product.IdProducto)">
                                                     <i class="fa fa-shopping-cart"></i>
                                                 </button>
                                             </div>
@@ -246,23 +247,23 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="~/js/cargarCarrito.js"></script>
 <script>
-    $(document).on("click", ".addtocart", function () {
-        var productoId = $(this).attr('id');
+    function addCart(id) {
+        let idUsuario = document.getElementById("IdUsuario").value;
+        //let codigoSeguridad = document.getElementById("CodigoSeguridad").value;
+        let productoId = id;
         url = "https://localhost:44306/api/Carrito/AgregarACarrito"
 
         let headers = {
             "Content-Type": "application/json",
-            "Access-Control-Origin": "*",
-            "Origin": "https://localhost:44306"
+            "Access-Control-Origin": "*"
         }
 
         const data = {
-            IdUsuario: "17",
-            IdProducto: productoId.toString(),
-            Cantidad: "1"
+            IdUsuario: idUsuario,
+            IdProducto: productoId
         }
 
-        fetch("https://localhost:44306/api/Carrito/AgregarACarrito", {
+        fetch(url, {
             method: "POST",
             headers: headers,
             body: JSON.stringify(data)
@@ -273,5 +274,5 @@
         .then(function (data) {
             cargarCarrito()
         });
-    });
+    }
 </script>

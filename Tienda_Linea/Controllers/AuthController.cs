@@ -43,7 +43,6 @@ namespace Tienda_Linea.Controllers
                 }
                 else
                 {
-
                     return RedirectToAction("Index", "Auth");
                 }
             }

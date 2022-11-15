@@ -13,7 +13,7 @@ namespace Tienda_Linea.Models.Modelos
         {
             using(HttpClient client = new HttpClient())
             {
-                string rutaApi = ConfigurationManager.AppSettings["rutaApi"] + "https://localhost:44306/api/Carrito/GetCarrito/?id=" + id;
+                string rutaApi = ConfigurationManager.AppSettings["rutaApi"] + "api/Carrito/GetCarrito/?id=" + id;
                 string token = HttpContext.Current.Session["CodigoSeguridad"].ToString();
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                 HttpResponseMessage respuesta = client.GetAsync(rutaApi).Result;

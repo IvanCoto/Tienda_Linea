@@ -54,7 +54,7 @@ namespace Tienda_Linea.Controllers
         [FiltroSesion]
         [HttpGet]
         public ActionResult Checkout()
-        {
+         {
             try
             {
                 int idUsuario = (int)Session["IdUsuario"];

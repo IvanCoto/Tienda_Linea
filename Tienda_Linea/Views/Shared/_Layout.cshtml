@@ -25,7 +25,9 @@
 </head>
 
 <body>
-    <input type="hidden" value="@Session["IdUsuario"]" id="IdUsuario"/>
+    <input type="hidden" value="@Session["IdUsuario"]" id="IdUsuario" />
+    <input type="hidden" value="@Session["CodigoSeguridad"]" id="CodigoSeguridad" />
+
     <!-- loader -->
     <div class="loader" id="window">
         <img src="image/preloader.gif" id="hourglass2" alt="hourglass" title="hourglass">
@@ -39,7 +41,7 @@
                 <div class="row header_sec destop_header">
                     <div class="col-sm-4 rtl_logo">
                         <div id="logo">
-                            <a href="#">
+                            <a href="@Url.Action("Index", "Home")">
                                 <img src="~/image/logo1.png" title="Your Store" alt="Your Store"
                                      class="img-responsive" />
                             </a>
@@ -92,9 +94,11 @@
                                         <hr />
                                         <ul class="m-3" id="cart_list"></ul>
                                         <hr />
-                                        <a href="@Url.Action("Checkout","Home")" class="text-center">
-                                            Checkout
-                                        </a>
+                                        <div class="w-100 d-flex justify-content-center">
+                                            <a href="@Url.Action("Checkout","Home")">
+                                                Checkout
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -180,7 +184,7 @@
 
     <script>
         $('#top-scrolltop').on('click', function () {
-            $('html, body').animate({ scrollTop: 0 }, 500);
+            $('html, body').animate({ scrollTop: 0 });
         });
 
         $(function ($) {
@@ -196,7 +200,7 @@
             });
 
             $('.back-to-top').click(function () {
-                $('body,html').animate({ scrollTop: 0 }, 1200);
+                $('body,html').animate({ scrollTop: 0 }, 0);
                 return false;
             });
         });
@@ -338,59 +342,6 @@
             });
         });
     </script>
-    <script type="text/javascript">
-        $('#newsletterModal .button-subsribe').on('click', function () {
-            $.ajax({
-                url: 'index.php?route=extension/awesomenewsletter_popup/addsubscribe',
-                type: 'post',
-                data: $('#newsletterModal .subsribe input[type=\'text\']'),
-                dataType: 'json',
-                beforeSend: function () {
-                    $('#newsletterModal .button-subsribe').button('loading');
-                },
-                complete: function () {
-                    $('#newsletterModal .button-subsribe').button('reset');
-                },
-                success: function (json) {
-                    $('.alert, .text-danger').remove();
-                    $('.form-group').removeClass('has-error');
-                    $('#newsletterModal .successmsg').html('');
-
-                    if (json['error']) {
-                        for (i in json['error']) {
-                            var element = $('#newsletterModal #input-newsletter-' + i.replace('_', '-'));
-
-                            if ($(element).parent().hasClass('input-group')) {
-                                $(element).parent().after('<div class="text-danger">' + json['error'][i] + '</div>');
-                            } else {
-                                $(element).after('<div class="text-danger">' + json['error'][i] + '</div>');
-                            }
-                        }
-
-                        $('.text-danger').parent().addClass('has-error');
-                    }
-
-                    if (json['success']) {
-                        $('#newsletterModal .successmsg').html('<div class="alert alert-success">' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
-
-                        $('#newsletterModal .subsribe input[type=\'text\']').val('');
-                    }
-
-                    if (json['warring']) {
-                        $('#newsletterModal .successmsg').html('<div class="alert alert-danger">' + json['warring'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
-                    }
-                }
-            });
-        });
-    </script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            var time = parseInt(10 * 1000);
-            setTimeout(function () {
-                $('#newsletterModal').modal('show')
-            }, time);
-        });
-    </script>
     <script>
         $(document).ready(function () {
             $('#eblogmodule0').owlCarousel({
@@ -438,7 +389,6 @@
         let headers = {
             "Content-Type": "application/json",
             "Access-Control-Origin": "*",
-            "Origin": "https://localhost:44306"
         }
         $(document).ready(cargarCarrito());
     </script>
