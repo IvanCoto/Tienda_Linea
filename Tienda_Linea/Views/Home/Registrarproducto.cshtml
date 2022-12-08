@@ -1,0 +1,70 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@model Tienda_Linea.Models.Producto
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card border-info">
+            <div class="card-header bg-info text-white">
+                Crear productos Nuevos
+            </div>
+            @using (Html.BeginForm("Registrarproducto", "Home", FormMethod.Post))
+            {
+                <div class="m-3 row w-100">
+                    <div class="col-6 border d-flex flex-column align-items-center w-100">
+                        <div class="row w-100">
+                            <div class="form-group mt-2 w-100 d-flex flex-column align-items-center">
+                                <label for="txtRucProveedor" class="col-form-label col-form-label-sm">Nombre Producto</label>
+                                @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control w-100" } })
+                            </div>
+                        </div>
+
+                        <div class="row w-100">
+                            <div class="form-group mt-2 w-100 d-flex flex-column align-items-center">
+                                <label for="txtRucProveedor" class="col-form-label col-form-label-sm">Descripcion</label>
+                                @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+
+                        <div class="row w-100">
+                            <div class="form-group mt-2 w-100 d-flex flex-column align-items-center">
+                                <label for="txtRucProveedor" class="col-form-label col-form-label-sm">Precio</label>
+                                @Html.EditorFor(model => model.Precio, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+
+                        <div class="row w-100">
+                            <div class="form-group mt-2 w-100 d-flex flex-column align-items-center">
+                                <label for="txtRucProveedor" class="col-form-label col-form-label-sm">Cantidad de producto</label>
+                                @Html.EditorFor(model => model.Stock, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+
+                        <div class="row w-100">
+                            <div class="form-group mt-2 w-100 d-flex flex-column align-items-center">
+                                <label for="txtRucProveedor" class="col-form-label col-form-label-sm">Categoria</label>
+                                @Html.DropDownListFor(model => model.IdCategoria, ViewBag.Categorias as List<SelectListItem>, new { @class = "form-control h-100" })
+                            </div>
+                        </div>
+
+
+                        <div class="row w-100">
+                            <div class="form-group mt-2 w-100 d-flex flex-column align-items-center">
+                                <label for="txtRucProveedor" class="col-form-label col-form-label-sm">Rol</label>
+                                @Html.DropDownListFor(model => model.IdMarca, ViewBag.Marcas as List<SelectListItem>, new { @class = "form-control h-100" })
+                            </div>
+                        </div>
+
+                        <div class="row w-100 mb-2">
+                            <div class="form-group w-100 d-flex justify-content-center">
+                                <button type="submit" class="btn btn-success" style="width:120px">Crear</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

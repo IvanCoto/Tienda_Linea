@@ -11,14 +11,14 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav row w-100">
                             <li class="nav-item col-2">
-                                @Html.ActionLink("Inicio", "Index", "Home", new { @class = "nav-link fs-3" })
+                                @Html.ActionLink("Inicio", "Index", "Home", new { @class = "nav-link fs-3 text-center" })
                             </li>
                             @if (ViewBag.categorias != null)
                             {
                                 foreach (var categoria in ViewBag.categorias)
                                 {
                                     <li class="dropdown nav-item col-2">
-                                        <a href="@Url.Action("Bicicletas", "Home", new { id = categoria.IdCategoria })" class="nav-link fs-3">
+                                        <a href="@Url.Action("Bicicletas", "Home", new { id = categoria.IdCategoria })" class="nav-link fs-3 text-center">
                                             @categoria.Descripcion
                                         </a>
                                     </li>

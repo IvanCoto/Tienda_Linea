@@ -31,7 +31,6 @@ namespace Tienda_Linea.Controllers
             //string identificacion, string passw
             try
             {
-                usuario.Contrasenna = Encrypt(usuario.Contrasenna);
                 var resultado = modelUsuario.Valida_Usuario(usuario);
                 if (resultado != null && resultado.Codigo == 1)
                 {
@@ -39,7 +38,10 @@ namespace Tienda_Linea.Controllers
                     Session["CodigoSeguridad"] = resultado.respuestaObj.Token;
                     Session["NombreUsuario"] = resultado.respuestaObj.Nombre;
                     Session["TipoUsuario"] = resultado.respuestaObj.TipoUsuario;
-
+                    if (resultado.respuestaObj.TipoUsuario.IdRol == 1)
+                    {
+                        return RedirectToAction("Productos", "Home");
+                    }
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -60,7 +62,6 @@ namespace Tienda_Linea.Controllers
         {
             try
             {
-                usuario.Contrasenna = Encrypt(usuario.Contrasenna);
                 var resultado = modelUsuario.Registrar_Usuario(usuario);
                 if (resultado != null && resultado.Codigo == 1)
                 {
@@ -100,10 +101,8 @@ namespace Tienda_Linea.Controllers
         public ActionResult RecuperarContraseña( string correo )
         {
             //Generar el token para la recuperacion
-            string token = Encrypt(Guid.NewGuid().ToString());
             Recovery recovery = new Recovery();
             recovery.Correo = correo;
-            recovery.Token = token;
             var resultado = modelUsuario.Registrar_Token(recovery);
             //Enviar alerta de que se envio el recovery
             return RedirectToAction("Index","Auth");        
@@ -120,28 +119,7 @@ namespace Tienda_Linea.Controllers
         {
             return View();
         }
-
-        static string key { get; set; } = "A!9HHhi%XjjYY4YP2@Nob009X";
-        //Encryptacion con MD5
-        public static string Encrypt(string text)
-        {
-            using (var md5 = new MD5CryptoServiceProvider())
-            {
-                using (var tdes = new TripleDESCryptoServiceProvider())
-                {
-                    tdes.Key = md5.ComputeHash(UTF8Encoding.UTF8.GetBytes(key));
-                    tdes.Mode = CipherMode.ECB;
-                    tdes.Padding = PaddingMode.PKCS7;
-
-                    using (var transform = tdes.CreateEncryptor())
-                    {
-                        byte[] textBytes = UTF8Encoding.UTF8.GetBytes(text);
-                        byte[] bytes = transform.TransformFinalBlock(textBytes, 0, textBytes.Length);
-                        return Convert.ToBase64String(bytes, 0, bytes.Length);
-                    }
-                }
-            }
-        }
+     
 
         //Desencryptacion con MD5
         /*public static string Decrypt(string cipher)

@@ -1,0 +1,70 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@model Tienda_Linea.Models.Usuario
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card border-info">
+            <div class="card-header bg-info text-white">
+                Actualizar Productos
+            </div>
+            @using (Html.BeginForm("Actualizarusuario", "Home", FormMethod.Post))
+            {
+                @Html.HiddenFor(model => model.IdUsuario, new { htmlAttributes = new { @class = "form-control" } })
+                <div class="m-3 row w-100">
+                    <div class="col-6 border d-flex flex-column align-items-center w-100">
+                        <div class="row w-100">
+                            <div class="form-group mt-2 w-100 d-flex flex-column align-items-center">
+                                <label for="txtRucProveedor" class="col-form-label col-form-label-sm">Nombre Producto</label>
+                                @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control w-100" } })
+                            </div>
+                        </div>
+
+                        <div class="row w-100">
+                            <div class="form-group mt-2 w-100 d-flex flex-column align-items-center">
+                                <label for="txtRucProveedor" class="col-form-label col-form-label-sm">Identificacion</label>
+                                @Html.EditorFor(model => model.Identificacion, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+
+                        <div class="row w-100">
+                            <div class="form-group mt-2 w-100 d-flex flex-column align-items-center">
+                                <label for="txtRucProveedor" class="col-form-label col-form-label-sm">Correo</label>
+                                @Html.EditorFor(model => model.Correo, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+
+                        <div class="row w-100">
+                            <div class="form-group mt-2 w-100 d-flex flex-column align-items-center">
+                                <label for="txtRucProveedor" class="col-form-label col-form-label-sm">Telefono</label>
+                                @Html.EditorFor(model => model.Telefono[0].Numero, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+
+                        <div class="row w-100">
+                            <div class="form-group mt-2 w-100 d-flex flex-column align-items-center">
+                                <label for="txtRucProveedor" class="col-form-label col-form-label-sm">Rol</label>
+                                @Html.DropDownListFor(model => model.TipoUsuario.IdRol, ViewBag.Roles as List<SelectListItem>, new { @class = "form-control h-100" })
+                            </div>
+                        </div>
+
+                        <div class="row w-100">
+                            <div class="form-group mt-2 w-100 d-flex flex-column align-items-center">
+                                <label for="txtRucProveedor" class="col-form-label col-form-label-sm">Activo</label>
+                                @Html.EditorFor(model => model.Activo)
+                            </div>
+                        </div>
+
+                        <div class="row w-100 mb-2">
+                            <div class="form-group w-100 d-flex justify-content-center">
+                                <button type="submit" class="btn btn-success" style="width:120px">Modificar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            </div>
+        </div>
+    </div>

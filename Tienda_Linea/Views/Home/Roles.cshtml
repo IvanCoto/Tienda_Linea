@@ -1,0 +1,60 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card border-info">
+            <div class="card-header bg-info text-white">
+                Lista Roles
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <div class="col">
+                                <a class="btn btn-success" href="@Url.Action("Registrarrol", "Home")">Crear Rol</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="row mt-3">
+                    <div class="col-sm-12">
+                        @if (ViewBag.Roles != null)
+                        {
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Descripción</th>
+                                        <th>Activo</th>
+                                    </tr>
+                                </thead>
+
+                                @foreach (Tienda_Linea.Models.Objetos.Rol rol in ViewBag.Roles)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => rol.IdRol)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => rol.Descripcion)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => rol.activo, new { @readonly = "readonly" })
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Actualizar ", "Actualizarrol", "Home", new { idRol = rol.IdRol }, new { @class = "btn btn-success" })
+                                        </td>
+                                    </tr>
+                                }
+
+                            </table>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

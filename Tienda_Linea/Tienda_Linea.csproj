@@ -157,8 +157,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Modelos\FiltroAdmin.cs" />
+    <Compile Include="Models\Modelos\MarcaModel.cs" />
     <Compile Include="Models\Modelos\CategoriaModel.cs" />
     <Compile Include="Models\Modelos\FiltroSesion.cs" />
+    <Compile Include="Models\Modelos\RolModel.cs" />
     <Compile Include="Models\Modelos\ProductoModel.cs" />
     <Compile Include="Models\Modelos\CarritoModel.cs" />
     <Compile Include="Models\Modelos\UsuarioModel.cs" />
@@ -168,6 +171,7 @@
     <Compile Include="Models\Objetos\Producto.cs" />
     <Compile Include="Models\Objetos\Recovery.cs" />
     <Compile Include="Models\Objetos\Respuesta.cs" />
+    <Compile Include="Models\Objetos\Rol.cs" />
     <Compile Include="Models\Objetos\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -331,6 +335,23 @@
     <Content Include="Views\Auth\RecuperarContraseña.cshtml" />
     <Content Include="Views\Auth\Recuperar.cshtml" />
     <Content Include="Views\Home\checkout.cshtml" />
+    <Content Include="Views\Home\Actualizarproducto.cshtml" />
+    <Content Include="Views\Home\DetalleCompra.cshtml" />
+    <Content Include="Views\Home\Productos.cshtml" />
+    <Content Include="Views\Home\Registrarproducto.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Home\Roles.cshtml" />
+    <Content Include="Views\Home\Actualizarrol.cshtml" />
+    <Content Include="Views\Home\Registrarrol.cshtml" />
+    <Content Include="Views\Home\Categorias.cshtml" />
+    <Content Include="Views\Home\Registrarcategoria.cshtml" />
+    <Content Include="Views\Home\Actualizarcategoria.cshtml" />
+    <Content Include="Views\Home\Marcas.cshtml" />
+    <Content Include="Views\Home\Registrarmarca.cshtml" />
+    <Content Include="Views\Home\Actualizarmarca.cshtml" />
+    <Content Include="Views\Home\Usuarios.cshtml" />
+    <Content Include="Views\Home\Registrarusuario.cshtml" />
+    <Content Include="Views\Home\Actualizarusuario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

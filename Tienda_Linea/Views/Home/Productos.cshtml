@@ -1,0 +1,74 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card border-info">
+            <div class="card-header bg-info text-white">
+                Lista Productos
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <div class="col">
+                                <a class="btn btn-success" href="@Url.Action("Registrarproducto", "Home")">Crear Producto</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="row mt-3">
+                    <div class="col-sm-12">
+                        @if (ViewBag.Productos != null)
+                        {
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Nombre</th>
+                                        <th>Descripción</th>
+                                        <th>Precio</th>
+                                        <th>Cantidad</th>
+                                        <th>Activo</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+
+                                @foreach (Tienda_Linea.Models.Producto producto in ViewBag.Productos)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => producto.IdProducto)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => producto.Nombre)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => producto.Descripcion)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => producto.Precio)
+                                        </td>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => producto.Stock)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => producto.Estado, new { @readonly = "readonly" })
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Actualizar ", "Actualizarproducto", "Home", new { idProducto = producto.IdProducto }, new { @class = "btn btn-success" })
+                                        </td>
+                                    </tr>
+                                }
+
+                            </table>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -3,16 +3,17 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Web;
+using Tienda_Linea.Models.Objetos;
 
 namespace Tienda_Linea.Models.Modelos
 {
-    public class ProductoModel
+    public class RolModel
     {
-        public RespuestaProducto GetProductos()
+        public RespuestaRol GetRoles()
         {
             using(HttpClient client = new HttpClient())
             {
-                string rutaApi = ConfigurationManager.AppSettings["rutaApi"] + "api/Producto";
+                string rutaApi = ConfigurationManager.AppSettings["rutaApi"] + "api/Roles";
                 string token = HttpContext.Current.Session["CodigoSeguridad"].ToString();
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
@@ -21,17 +22,17 @@ namespace Tienda_Linea.Models.Modelos
                 if (respuesta.IsSuccessStatusCode)
                 {
                     //Deserialización System.Net.Http.Formatting.Extension
-                    return respuesta.Content.ReadAsAsync<RespuestaProducto>().Result;
+                    return respuesta.Content.ReadAsAsync<RespuestaRol>().Result;
                 }
                 return null;
             }
         }
 
-        public RespuestaProducto GetProductosAdmin()
+        public RespuestaRol GetRolById(int rolId)
         {
             using (HttpClient client = new HttpClient())
             {
-                string rutaApi = ConfigurationManager.AppSettings["rutaApi"] + "api/ProductoAdmin";
+                string rutaApi = ConfigurationManager.AppSettings["rutaApi"] + "api/Roles/"+rolId;
                 string token = HttpContext.Current.Session["CodigoSeguridad"].ToString();
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
@@ -40,71 +41,51 @@ namespace Tienda_Linea.Models.Modelos
                 if (respuesta.IsSuccessStatusCode)
                 {
                     //Deserialización System.Net.Http.Formatting.Extension
-                    return respuesta.Content.ReadAsAsync<RespuestaProducto>().Result;
+                    return respuesta.Content.ReadAsAsync<RespuestaRol>().Result;
                 }
                 return null;
             }
         }
 
-        public RespuestaProducto GetProductoById(int productoId)
+        public RespuestaRol Rol_Registrar(Rol r)
         {
             using (HttpClient client = new HttpClient())
             {
-                string rutaApi = ConfigurationManager.AppSettings["rutaApi"] + "api/Producto/"+productoId;
-                string token = HttpContext.Current.Session["CodigoSeguridad"].ToString();
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-
-                HttpResponseMessage respuesta = client.GetAsync(rutaApi).Result;
-
-                if (respuesta.IsSuccessStatusCode)
-                {
-                    //Deserialización System.Net.Http.Formatting.Extension
-                    return respuesta.Content.ReadAsAsync<RespuestaProducto>().Result;
-                }
-                return null;
-            }
-        }
-
-        public RespuestaProducto Producto_Registrar(Producto p) //IGUAL AL DE USUARIO
-        {
-            using (HttpClient client = new HttpClient())
-            {
-                string rutaApi = ConfigurationManager.AppSettings["rutaApi"] + "api/Producto/RegistrarProducto";
+                string rutaApi = ConfigurationManager.AppSettings["rutaApi"] + "api/Roles/RegistrarRol";
                 string token = HttpContext.Current.Session["CodigoSeguridad"].ToString();
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
                 //Serialización System.Net.Http.Json;
-                JsonContent contenido = JsonContent.Create(p);
+                JsonContent contenido = JsonContent.Create(r);
 
                 HttpResponseMessage respuesta = client.PostAsync(rutaApi, contenido).Result;
 
                 if (respuesta.IsSuccessStatusCode)
                 {
                     //Deserialización System.Net.Http.Formatting.Extension
-                    return respuesta.Content.ReadAsAsync<RespuestaProducto>().Result;
+                    return respuesta.Content.ReadAsAsync<RespuestaRol>().Result;
                 }
                 return null;
             }
         }
 
-        public RespuestaProducto Producto_Editar(Producto obj)
+        public RespuestaRol Rol_Editar(Rol obj)
         {
             using (HttpClient client = new HttpClient())
             {
-                string rutaApi = ConfigurationManager.AppSettings["rutaApi"] + "api/Producto/ActualizarProducto";
+                string rutaApi = ConfigurationManager.AppSettings["rutaApi"] + "api/Roles/ActualizarRol";
                 string token = HttpContext.Current.Session["CodigoSeguridad"].ToString();
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
                 //Serialización System.Net.Http.Json;
                 JsonContent contenido = JsonContent.Create(obj);
 
-                // client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                 HttpResponseMessage respuesta = client.PostAsync(rutaApi, contenido).Result;
 
                 if (respuesta.IsSuccessStatusCode)
                 {
                     //Deserialización System.Net.Http.Formatting.Extension
-                    return respuesta.Content.ReadAsAsync<RespuestaProducto>().Result;
+                    return respuesta.Content.ReadAsAsync<RespuestaRol>().Result;
                 }
                 return null;
             }
