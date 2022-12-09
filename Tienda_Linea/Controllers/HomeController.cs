@@ -43,8 +43,9 @@ namespace Tienda_Linea.Controllers
         {
             try
             {
+                ViewBag.categorias = modelCategoria.Obtener_Categorias().respuestaLista;
                 ViewBag.categoria = modelCategoria.GetCategoriaById(id).respuestaObj.Descripcion;
-                ViewBag.productos = modelProducto.GetProductos().respuestaLista;
+                ViewBag.productos = modelProducto.GetProductoByCategoria(id).respuestaLista;
                 return View();
             }catch (Exception ex)
             {
@@ -55,12 +56,84 @@ namespace Tienda_Linea.Controllers
 
         [FiltroSesion]
         [HttpGet]
+        public ActionResult GetCarrito()
+        {
+            try
+            {
+                //return Json(null, JsonRequestBehavior.DenyGet);
+                int idUsuario = (int)Session["IdUsuario"];
+                var carrito = modelCarrito.Get_Productos_Carrito(idUsuario);
+                if (carrito != null)
+                    return Json(carrito, JsonRequestBehavior.AllowGet);
+                else
+                    return Json(null, JsonRequestBehavior.DenyGet);
+            }
+            catch (Exception ex)
+            {
+                //Cambiar por guardar error
+                return View();
+            }
+        }
+
+        [FiltroSesion]
+        [HttpPost]
+        public ActionResult AddCarrito(int idProducto)
+        {
+            try
+            {
+                //return Json(null, JsonRequestBehavior.DenyGet);
+                var idUsuario = Session["IdUsuario"];
+                Carrito carrito = new Carrito();
+                carrito.IdProducto = idProducto;
+                carrito.IdUsuario = (int)idUsuario;
+                var resultado = modelCarrito.Add_Productos_Carrito(carrito);
+
+                if (resultado != null && resultado.Codigo == 1)
+                    return Json("OK", JsonRequestBehavior.AllowGet);
+                else
+                    return Json(null, JsonRequestBehavior.DenyGet);
+            }
+            catch (Exception ex)
+            {
+                //Cambiar por guardar error
+                return View();
+            }
+        }
+
+        [FiltroSesion]
+        [HttpPost]
+        public ActionResult DeleteCarrito(int idProducto)
+        {
+            try
+            {
+                //return Json(null, JsonRequestBehavior.DenyGet);
+                var idUsuario = Session["IdUsuario"];
+                Carrito carrito = new Carrito();
+                carrito.IdProducto = idProducto;
+                carrito.IdUsuario = (int)idUsuario;
+                var resultado = modelCarrito.Delete_Productos_Carrito(carrito);
+
+                if (resultado != null && resultado.Codigo == 1)
+                    return Json("OK", JsonRequestBehavior.AllowGet);
+                else
+                    return Json(null, JsonRequestBehavior.DenyGet);
+            }
+            catch (Exception ex)
+            {
+                //Cambiar por guardar error
+                return View();
+            }
+        }
+
+
+        [FiltroSesion]
+        [HttpGet]
         public ActionResult Checkout()
          {
             try
             {
+                //return Json(null, JsonRequestBehavior.DenyGet);
                 int idUsuario = (int)Session["IdUsuario"];
-                ViewBag.productos = modelCarrito.Get_Productos_Carrito(idUsuario).respuestaLista;
                 return View();
             }catch (Exception ex)
             {

@@ -1,54 +1,65 @@
 ﻿function cargarCarrito() {
-    let idUsuario = document.getElementById("IdUsuario").value;
-
-    fetch('https://localhost:44306/api/Carrito/GetCarrito/?id=' + idUsuario, {
-        method: "GET",
-        headers: headers,
-    })
-    .then((response) => response.json())
-    .then(function (response) {
-        let cantidad = 0
-        let product = ""
-        if (response.respuestaLista != null) {
-            response.respuestaLista.forEach(element => {
-                cantidad += element.Cantidad
-                product += "<li class='list-item d-flex justify-content-between'>"+
-                                "<p>"+element.NombreProducto+"</p>"+
-                                "<p>"+element.Cantidad+"</p>"+
-                                "<p>"+
-                                    "<button class='btn btn-primary' onclick=aumentarCarrito("+element.IdProducto+")>+</button>"+
-                                    "<button class='btn btn-danger ms-3' onclick=disminuirCarrito("+element.IdProducto+")>-</button>"+
-                                "</p>"+
-                            "</li>"
-                document.getElementById("cart_list").innerHTML = product;
+    $.ajax({
+        type: 'GET',
+        url: '/Home/GetCarrito',
+        data: {},
+        success: function (data) {
+            let cantidad = 0
+            let product = ""
+            if (data.respuestaLista != null) {
+                data.respuestaLista.forEach(element => {
+                    cantidad += element.Cantidad
+                    product += "<li class='list-item d-flex justify-content-between' style='display: flex; justify-content: space-between;'>" +
+                        "<p class='text-center'>" + element.NombreProducto + "</p>" +
+                        "<p>" + element.Cantidad + "</p>" +
+                        "<p>" +
+                        "</p>" +
+                        "</li>"
                 })
+                document.getElementById("cart_list").innerHTML = product;
+            }
+            else {
+                product = "<li><p class='text-center'>¡El carrito esta vacio!</p></li>"
+                document.getElementById("cart_list").innerHTML = product;
+            }
+            document.getElementById("art_cart").innerHTML = cantidad;
+        },
+        error: function (data) {
+            console.log('Error')
         }
-        else {
-            product = "<li><p class='text-center'>¡El carrito esta vacio!</p></li>"
-            document.getElementById("cart_list").innerHTML = product;
-        }
-        document.getElementById("art_cart").innerHTML = cantidad;
-    })
+    });
 }
 
-function aumentarCarrito(idProducto) {
-    idUsuario = document.getElementById("IdUsuario").value;
-    fetch('https://localhost:44306/api/Carrito/AddCart', {
-        method: "POST",
-        headers: headers,
-        body: JSON.stringify({ IdUsuario: idUsuario, IdProducto: idProducto })
-    })
-    .then((response) => response.json())
-    .then((response) => cargarCarrito())
+function aumentarCarrito(id) {
+    $.ajax({
+        type: 'POST',
+        url: '/Home/AddCarrito',
+        data: {
+            "idProducto": id
+        },
+        dataType: 'json',
+        success: function (data) {
+            cargarCarrito()
+        },
+        error: function (data) {
+            console.log('Error')
+        }
+    });
 }
 
-function disminuirCarrito(idProducto) {
-    idUsuario = document.getElementById("IdUsuario").value;
-    fetch('https://localhost:44306/api/Carrito/RestCart', {
-        method: "POST",
-        headers: headers,
-        body: JSON.stringify({ IdUsuario: idUsuario, IdProducto: idProducto })
-    })
-    .then((response) => response.json())
-    .then((response) => cargarCarrito())
+function disminuirCarrito(id) {
+    $.ajax({
+        type: 'POST',
+        url: '/Home/DeleteCarrito',
+        data: {
+            "idProducto": id
+        },
+        dataType: 'json',
+        success: function (data) {
+            cargarCarrito()
+        },
+        error: function (data) {
+            console.log('Error')
+        }
+    });
 }

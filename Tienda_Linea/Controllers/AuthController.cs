@@ -65,6 +65,7 @@ namespace Tienda_Linea.Controllers
                 var resultado = modelUsuario.Registrar_Usuario(usuario);
                 if (resultado != null && resultado.Codigo == 1)
                 {
+                    Session["IdUsuario"] = resultado.respuestaObj.IdUsuario;
                     Session["CodigoSeguridad"] = resultado.respuestaObj.Token;
                     Session["NombreUsuario"] = resultado.respuestaObj.Nombre;
                     Session["TipoUsuario"] = resultado.respuestaObj.TipoUsuario;
@@ -72,7 +73,7 @@ namespace Tienda_Linea.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", "Auth");
                 }
             }
             catch ( Exception ex )

@@ -65,6 +65,25 @@ namespace Tienda_Linea.Models.Modelos
             }
         }
 
+        public RespuestaProducto GetProductoByCategoria(int IdCategoria)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                string rutaApi = ConfigurationManager.AppSettings["rutaApi"] + "api/Producto/Categorias/" + IdCategoria;
+                string token = HttpContext.Current.Session["CodigoSeguridad"].ToString();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                HttpResponseMessage respuesta = client.GetAsync(rutaApi).Result;
+
+                if (respuesta.IsSuccessStatusCode)
+                {
+                    //Deserialización System.Net.Http.Formatting.Extension
+                    return respuesta.Content.ReadAsAsync<RespuestaProducto>().Result;
+                }
+                return null;
+            }
+        }
+
         public RespuestaProducto Producto_Registrar(Producto p) //IGUAL AL DE USUARIO
         {
             using (HttpClient client = new HttpClient())

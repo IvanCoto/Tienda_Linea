@@ -140,7 +140,7 @@
                                                     <button type="button" class="addtocart" data-toggle="tooltip"
                                                             data-placement="left" data-original-title="Add to Cart"
                                                             id="@product.IdProducto"
-                                                            onclick="addCart(@product.IdProducto)">
+                                                            onclick="aumentarCarrito(@product.IdProducto)">
                                                         <i class="fa fa-shopping-cart"></i>
                                                     </button>
                                                 </div>
@@ -264,33 +264,3 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="~/js/cargarCarrito.js"></script>
-<script>
-    function addCart(id) {
-        let idUsuario = document.getElementById("IdUsuario").value;
-        //let codigoSeguridad = document.getElementById("CodigoSeguridad").value;
-        let productoId = id;
-        url = "https://localhost:44306/api/Carrito/AgregarACarrito"
-
-        let headers = {
-            "Content-Type": "application/json",
-            "Access-Control-Origin": "*"
-        }
-
-        const data = {
-            IdUsuario: idUsuario,
-            IdProducto: productoId
-        }
-
-        fetch(url, {
-            method: "POST",
-            headers: headers,
-            body: JSON.stringify(data)
-        })
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (data) {
-                cargarCarrito()
-            });
-    }
-</script>

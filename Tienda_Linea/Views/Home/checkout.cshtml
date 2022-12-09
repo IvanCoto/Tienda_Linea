@@ -22,44 +22,24 @@
                             <i class="fa fa-shopping-cart"></i> Shopping Cart
                         </h4>
                     </div>
-                    @if (ViewBag.productos != null)
-                    {
-                    <div class="panel-body">
-                        <div class="shopping-cart-content ext-carts min-hght">
-                            <div>
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Producto</th>
-                                            <th scope="col">Precio</th>
-                                            <th scope="col">Cantidad</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="cart-check-list">
-                                        @foreach (Tienda_Linea.Models.Objetos.Carrito carrito in ViewBag.productos)
-                                        {
+                        <div class="panel-body">
+                            <div class="shopping-cart-content ext-carts min-hght">
+                                <div>
+                                    <table class="table">
+                                        <thead>
                                             <tr>
-                                                <td>@carrito.NombreProducto</td>
-                                                <td>@carrito.PrecioProducto</td>
-                                                <td>@carrito.Cantidad</td>
-                                                <td>
-                                                    <button class="btn btn-primary" onclick="aumentarCarritoTabla(@carrito.IdProducto)">+</button>
-                                                    <button class="btn btn-danger" onclick="disminuirCarritoTabla(@carrito.IdProducto)">-</button>
-                                                </td>
+                                                <th scope="col">Producto</th>
+                                                <th scope="col">Precio</th>
+                                                <th scope="col">Cantidad</th>
                                             </tr>
-                                        }
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody id="cart-check-list">
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    }
-                    @if (ViewBag.productos == null)
-                    {
-                        <div class="my-4">
-                            <p class="text-center fs-3">¡Aún no hay productos en el carrito!</p>
-                        </div>
-                    }
                 </div>
             </div>
         </div>
@@ -94,61 +74,78 @@
         </div>
     </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="~/js/cargarCarrito.js"></script>
+
 <script>
     function cargarTabla() {
-        let idUsuario = document.getElementById("IdUsuario").value;
-        fetch('https://localhost:44306/api/Carrito/GetCarrito/?id=' + idUsuario, {
-            method: "GET",
-            headers: headers,
-        })
-        .then((response) => response.json())
-        .then(function (response) {
-            let product = ""
-            if (response.respuestaLista != null) {
-                response.respuestaLista.forEach(element => {
-                    product += "<tr>"+
-                                    "<td>"+element.NombreProducto+"</td>"+
-                                    "<td>"+element.PrecioProducto+"</td>"+
-                                    "<td>"+element.Cantidad+"</td>"+
-                                    "<td>"+
-                                        "<button class='btn btn-primary' onclick='aumentarCarritoTabla("+element.IdProducto+")'>+</button>"+
-                                        "<button class='btn btn-danger' onclick='disminuirCarritoTabla("+element.IdProducto+")'>-</button>"+
-                                    "</td>"+
-                                "</tr>"
+
+        $.ajax({
+            type: 'GET',
+            url: '/Home/GetCarrito',
+            data: {},
+            success: function (data) {
+                if (data.respuestaLista != null) {
+                    let product = ""
+                    data.respuestaLista.forEach(element => {
+                        product += "<tr>" +
+                            "<td>" + element.NombreProducto + "</td>" +
+                            "<td>" + element.PrecioProducto + "</td>" +
+                            "<td>" + element.Cantidad + "</td>" +
+                            "<td>" +
+                            "<button class='btn btn-primary' onclick='aumentarCarritoTabla(" + element.IdProducto + ")'>+</button>" +
+                            "<button class='btn btn-danger' onclick='disminuirCarritoTabla(" + element.IdProducto + ")'>-</button>" +
+                            "</td>" +
+                            "</tr>"
+                        document.getElementById("cart-check-list").innerHTML = product;
+                    })
+                }
+                else {
+                    product = "<li><p class='text-center'>¡El carrito esta vacio!</p></li>"
                     document.getElementById("cart-check-list").innerHTML = product;
-                })
+                }
+            },
+            error: function (data) {
+                console.log('Error')
             }
-            else {
-                product = "<li><p class='text-center'>¡El carrito esta vacio!</p></li>"
-                document.getElementById("cart_list").innerHTML = product;
-            }
-        })
-    }
-    function aumentarCarritoTabla(idProducto) {
-        idUsuario = document.getElementById("IdUsuario").value;
-        fetch('https://localhost:44306/api/Carrito/AddCart', {
-            method: "POST",
-            headers: headers,
-            body: JSON.stringify({ IdUsuario: idUsuario, IdProducto: idProducto })
-        })
-            .then((response) => response.json())
-            .then((response) => {
-                cargarCarrito()
-                cargarTabla()
-            })
+        });
     }
 
-    function disminuirCarritoTabla(idProducto) {
-        idUsuario = document.getElementById("IdUsuario").value;
-        fetch('https://localhost:44306/api/Carrito/RestCart', {
-            method: "POST",
-            headers: headers,
-            body: JSON.stringify({ IdUsuario: idUsuario, IdProducto: idProducto })
-        })
-        .then((response) => response.json())
-        .then((response) => {
-            cargarCarrito()
-            cargarTabla()
-        })
+    cargarTabla()
+
+    function aumentarCarritoTabla(id) {
+        $.ajax({
+            type: 'POST',
+            url: '/Home/AddCarrito',
+            data: {
+                "idProducto": id
+            },
+            dataType: 'json',
+            success: function (data) {
+                cargarTabla()
+                cargarCarrito()
+            },
+            error: function (data) {
+                console.log('Error')
+            }
+        });
+    }
+
+    function disminuirCarritoTabla(id) {
+        $.ajax({
+            type: 'POST',
+            url: '/Home/DeleteCarrito',
+            data: {
+                "idProducto": id
+            },
+            dataType: 'json',
+            success: function (data) {
+                cargarTabla()
+                cargarCarrito()
+            },
+            error: function (data) {
+                console.log('Error')
+            }
+        });
     }
 </script>
