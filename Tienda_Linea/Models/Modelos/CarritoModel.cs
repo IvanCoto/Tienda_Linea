@@ -67,5 +67,23 @@ namespace Tienda_Linea.Models.Modelos
                 return null;
             }
         }
+
+        public CarritoRespuesta Checkout(Carrito carrito)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                string rutaApi = ConfigurationManager.AppSettings["rutaApi"] + "api/Carrito/Checkout";
+                string token = HttpContext.Current.Session["CodigoSeguridad"].ToString();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                JsonContent contenido = JsonContent.Create(carrito);
+                HttpResponseMessage respuesta = client.PostAsync(rutaApi, contenido).Result;
+                if (respuesta.IsSuccessStatusCode)
+                {
+                    return respuesta.Content.ReadAsAsync<CarritoRespuesta>().Result;
+                }
+                return null;
+            }
+        }
     }
 }

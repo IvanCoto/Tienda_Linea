@@ -45,37 +45,13 @@
         </div>
     </div>
     <!--CART END-->
-    <div class="extrow">
-        <!-- Shipping -->
-        <div class="extsm-6">
-            <div class="full-payment-method format_load">
-                <div class="content-delivery-method">
-                    <div class="extpanel extpanel-default">
-                        <div class="extpanel-heading">
-                            <h4 class="extpanel-title"><i class="fa fa-send"></i> Shipping Methods</h4>
-                        </div>
-                        <div class="miniheightclass extpanel-body delivery-method-content ext-delivery-method"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Payment Methods -->
-        <div class="extsm-6">
-            <div class="full-payment-method format_load">
-                <div class="content-payment-method">
-                    <div class="extpanel extpanel-default">
-                        <div class="extpanel-heading">
-                            <h4 class="extpanel-title"><i class="fa fa-credit-card"></i> Payment Methods</h4>
-                        </div>
-                        <div class="miniheightclass extpanel-body payment-method-content ext-payment-method"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="w-100 my-5 d-flex justify-content-center">
+        <button onclick="confirmarCompra()" class="btn btn-success">Confirmar Compra</button>
     </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="~/js/cargarCarrito.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <script>
     function cargarTabla() {
@@ -140,6 +116,21 @@
             },
             dataType: 'json',
             success: function (data) {
+                cargarTabla()
+                cargarCarrito()
+            },
+            error: function (data) {
+                console.log('Error')
+            }
+        });
+    }
+
+    function confirmarCompra() {
+        $.ajax({
+            type: 'POST',
+            url: '/Home/CheckoutMethod',
+            success: function (data) {
+                swal("Gracias por preferirnos!", "El pedido fue enviado con exito!", "success");
                 cargarTabla()
                 cargarCarrito()
             },

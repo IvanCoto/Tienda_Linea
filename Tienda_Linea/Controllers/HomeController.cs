@@ -132,10 +132,32 @@ namespace Tienda_Linea.Controllers
          {
             try
             {
-                //return Json(null, JsonRequestBehavior.DenyGet);
-                int idUsuario = (int)Session["IdUsuario"];
                 return View();
             }catch (Exception ex)
+            {
+                //Cambiar por guardar error
+                return View();
+            }
+        }
+
+        [FiltroSesion]
+        [HttpPost]
+        public ActionResult CheckoutMethod()
+        {
+            try
+            {
+                int idUsuario = (int)Session["IdUsuario"];
+                Carrito carrito = new Carrito();
+                carrito.IdUsuario = (int)idUsuario;
+                var resultado = modelCarrito.Checkout(carrito);
+
+                if (resultado != null && resultado.Codigo == 1)
+                    return Json("OK", JsonRequestBehavior.AllowGet);
+                else
+                    return Json(null, JsonRequestBehavior.DenyGet);
+
+            }
+            catch (Exception ex)
             {
                 //Cambiar por guardar error
                 return View();
